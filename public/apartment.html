@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>단지 360 VR | SJ부동산</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/apartment.css">
+</head>
+<body class="apt-page">
+
+  <header class="apt-header" id="site-header">
+    <a href="index.html" class="apt-logo-link" aria-label="SJ부동산 홈으로">
+      <img src="img/logo.svg" alt="SJ부동산" height="32">
+    </a>
+    <nav id="apt-breadcrumb" class="apt-breadcrumb"></nav>
+    <a href="https://open.kakao.com/o/g7PstLai" target="_blank" rel="noopener noreferrer" class="header-kakao-btn">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M7 1.5C3.962 1.5 1.5 3.47 1.5 5.9c0 1.516.9 2.85 2.27 3.67l-.62 2.3 2.84-1.62c.32.05.65.08.99.08 3.038 0 5.5-1.97 5.5-4.4S10.038 1.5 7 1.5z" fill="var(--kakao-text)"/>
+      </svg>
+      카톡 상담
+    </a>
+  </header>
+
+  <section id="complex-header" class="complex-header-section"></section>
+  <section id="highlights-section" class="apt-section"></section>
+  <section id="unit-breakdown-section" class="apt-section"></section>
+  <section id="transit-infra-section" class="apt-section"></section>
+  <section id="sitemap-section" class="apt-section"></section>
+  <section id="buildings-section" class="apt-section"></section>
+  <section id="viewer-section" class="viewer-section"></section>
+
+  <section class="kakao-section">
+    <div class="section-inner kakao-inner">
+      <h2 class="kakao-title">더 자세한 분양 정보가 궁금하신가요?</h2>
+      <p class="kakao-desc">SJ부동산 카톡방에서 실시간 상담 받아보세요</p>
+      <div class="kakao-btn-wrap">
+        <a href="https://open.kakao.com/o/g7PstLai" target="_blank" rel="noopener noreferrer" class="kakao-btn">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M7 1.5C3.962 1.5 1.5 3.47 1.5 5.9c0 1.516.9 2.85 2.27 3.67l-.62 2.3 2.84-1.62c.32.05.65.08.99.08 3.038 0 5.5-1.97 5.5-4.4S10.038 1.5 7 1.5z" fill="var(--kakao-text)"/>
+          </svg>
+          SJ부동산 카톡방 입장하기
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>SJ부동산 | 공인중개사 등록번호: 제26290-2024-00093</p>
+    <p>010-2879-5452 | 051-637-5452 | jsj_lhi@naver.com</p>
+    <a href="https://litt.ly/sj5452" target="_blank" rel="noopener noreferrer">https://litt.ly/sj5452</a>
+  </footer>
+
+  <!-- 비번 모달 -->
+  <div id="passwordModal" class="modal-overlay" style="display:none">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()" aria-label="닫기">×</button>
+      <div class="modal-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="color:var(--text-muted)">
+          <rect x="10" y="22" width="28" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M16 22v-6a8 8 0 0 1 16 0v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="24" cy="31" r="2" fill="currentColor"/>
+          <line x1="24" y1="33" x2="24" y2="37" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3 class="modal-title">더 많은 VR 조망을 보시려면</h3>
+      <p class="modal-desc">SJ부동산 카톡방에서 회원 비밀번호를 받아주세요. 한 번 입력하시면 세션 동안 모든 단지 VR을 자유롭게 보실 수 있습니다.</p>
+      <a href="https://open.kakao.com/o/g7PstLai" target="_blank" rel="noopener noreferrer" class="modal-btn-kakao">
+        카톡방에서 비밀번호 받기
+      </a>
+      <div class="modal-divider">또는</div>
+      <input type="password" id="modalPassword" placeholder="회원 비밀번호 입력" class="modal-input" autocomplete="current-password"/>
+      <button onclick="submitPassword()" class="modal-btn-submit">입장하기</button>
+      <p class="modal-error" id="modalError" style="display:none">비밀번호가 일치하지 않습니다</p>
+    </div>
+  </div>
+
+  <script src="js/apartment.js"></script>
+</body>
+</html>

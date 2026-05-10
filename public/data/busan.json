@@ -1,0 +1,103 @@
+{
+  "city": "부산광역시",
+  "city_en": "Busan",
+  "districts": [
+    {
+      "id": "haeundae",
+      "name": "해운대구",
+      "name_en": "Haeundae",
+      "subtitle": "부산 동부 프리미엄 생활권",
+      "apartment_ids": ["venuv"]
+    },
+    {
+      "id": "suyeong",
+      "name": "수영구",
+      "name_en": "Suyeong",
+      "subtitle": "광안리 오션뷰 생활권",
+      "apartment_ids": []
+    },
+    {
+      "id": "nam",
+      "name": "남구",
+      "name_en": "Nam",
+      "subtitle": "용호·문현 신주거 생활권",
+      "apartment_ids": []
+    }
+  ],
+  "apartments": {
+    "venuv": {
+      "id": "venuv",
+      "district_id": "haeundae",
+      "name": "베뉴브 해운대",
+      "name_en": "VENUV Haeundae",
+      "location": "부산광역시 해운대구 우동 1074번지 일원",
+      "developer": "(주)아이브이신라",
+      "constructor": "(주)삼한종합건설",
+      "project_type": "우동2구역재개발사업",
+      "scale": "지하 4층 ~ 지상 48층 / 3개동",
+      "households_total": 660,
+      "households_general": 629,
+      "unit_breakdown": [
+        { "size": "59㎡", "type_count": "A·B 2개 타입", "households": 25 },
+        { "size": "84㎡", "type_count": "A·B·C·D·E 5개 타입", "households": 496 },
+        { "size": "99㎡", "type_count": "1개 타입", "households": 108 }
+      ],
+      "sale_status": "분양 완료",
+      "move_in": "2029년 5월 예정",
+      "highlights": [
+        "광안리·해운대 파노라마 조망",
+        "커튼월룩 외관 특화 설계",
+        "48층 초고층 랜드마크 주거",
+        "컨시어지 서비스 및 입주민 전용 케어",
+        "벡스코역 직결 초역세권",
+        "우동2구역 재개발 브랜드 단지 희소성"
+      ],
+      "transit_infra": [
+        "지하철 2호선·동해선 벡스코역 직결 (도보 1분)",
+        "센텀시티 쇼핑·업무·컨벤션 지구 인접",
+        "APEC 나루공원 및 수영강 산책로 근거리",
+        "해운대 해수욕장 차량 5분",
+        "기장·광안리 광역 접근성 우수"
+      ],
+      "official_url": "https://venuv.co.kr/",
+      "buildings_data": [
+        {
+          "id": "101",
+          "name": "101동",
+          "captured": true,
+          "scenes": [
+            { "height": "30m", "url": "https://panoee.live/eflhwsu/post-101?sceneId=2179" },
+            { "height": "50m", "url": "https://panoee.live/eflhwsu/post-101?sceneId=2180" },
+            { "height": "70m", "url": "https://panoee.live/eflhwsu/post-101?sceneId=2181" },
+            { "height": "90m", "url": "https://panoee.live/eflhwsu/post-101?sceneId=2182" },
+            { "height": "110m", "url": "https://panoee.live/eflhwsu/post-101?sceneId=2183" }
+          ]
+        },
+        {
+          "id": "102",
+          "name": "102동",
+          "captured": true,
+          "scenes": [
+            { "height": "30m", "url": "https://panoee.live/eflhwsu/post-102?sceneId=2160" },
+            { "height": "50m", "url": "https://panoee.live/eflhwsu/post-102?sceneId=2161" },
+            { "height": "70m", "url": "https://panoee.live/eflhwsu/post-102?sceneId=2162" },
+            { "height": "90m", "url": "https://panoee.live/eflhwsu/post-102?sceneId=2163" },
+            { "height": "110m", "url": "https://panoee.live/eflhwsu/post-102?sceneId=2164" }
+          ]
+        },
+        {
+          "id": "103",
+          "name": "103동",
+          "captured": true,
+          "scenes": [
+            { "height": "30m", "url": "https://panoee.live/eflhwsu/post-103?sceneId=2165" },
+            { "height": "50m", "url": "https://panoee.live/eflhwsu/post-103?sceneId=2166" },
+            { "height": "70m", "url": "https://panoee.live/eflhwsu/post-103?sceneId=2167" },
+            { "height": "90m", "url": "https://panoee.live/eflhwsu/post-103?sceneId=2168" },
+            { "height": "110m", "url": "https://panoee.live/eflhwsu/post-103?sceneId=2169" }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,290 @@
+.district-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+.dist-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+
+.dist-logo-link {
+  display: flex;
+  align-items: center;
+}
+
+/* ── District hero ── */
+.district-hero-section {
+  background: var(--bg-warm);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 48px 32px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.district-name {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.district-name-en {
+  font-size: 15px;
+  color: var(--text-secondary);
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+.district-subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-top: 16px;
+}
+
+/* ── Apartments section ── */
+.apartments-section {
+  flex: 1;
+}
+
+/* ── Apartment card ── */
+.apartment-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 24px;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.apartment-card:first-of-type {
+  margin-top: 0;
+}
+
+.apartment-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.apartment-card:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.apartment-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.apartment-name {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.apartment-name-en {
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+.apartment-status-badge {
+  background: var(--bg-warm);
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Meta rows ── */
+.apartment-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.apartment-meta-row {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.apartment-meta-label {
+  color: var(--text-muted);
+  min-width: 56px;
+  flex-shrink: 0;
+}
+
+.apartment-meta-value {
+  color: var(--text-primary);
+}
+
+/* ── Developer info ── */
+.apartment-developer {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Highlights ── */
+.apartment-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.apartment-highlights li {
+  position: relative;
+  padding: 8px 0 8px 18px;
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.apartment-highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 16px;
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+/* ── 360 VR 버튼 ── */
+.apartment-vr-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 24px;
+  background: var(--accent);
+  color: white;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  margin-top: 8px;
+}
+
+.apartment-vr-button .arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.apartment-card:hover .apartment-vr-button {
+  background: var(--accent-hover);
+}
+
+.apartment-card:hover .apartment-vr-button .arrow {
+  transform: translateX(4px);
+}
+
+/* ── Empty state ── */
+.empty-state {
+  text-align: center;
+  padding: 64px 0;
+}
+
+.empty-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.empty-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.kakao-btn-wrap {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .dist-header {
+    padding: 12px 16px;
+  }
+
+  .section-inner {
+    padding: 32px 16px;
+  }
+
+  .district-name {
+    font-size: 22px;
+  }
+
+  .apartment-card {
+    padding: 24px;
+    border-radius: var(--radius-md);
+  }
+
+  .apartment-card-header {
+    flex-direction: column;
+  }
+
+  .apartment-name {
+    font-size: 20px;
+  }
+
+  .apartment-vr-button {
+    font-size: 15px;
+    padding: 14px 20px;
+  }
+
+  .site-footer {
+    padding: 24px 16px;
+  }
+}

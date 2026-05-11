@@ -1,50 +1,54 @@
 @echo off
 chcp 65001 >nul
 echo ============================================
-echo  SJ-360 APT VR 배포 시작
+echo  SJ-360 APT VR Deploy
 echo ============================================
 echo.
 cd /d "%~dp0"
+echo Working directory: %CD%
+echo.
 
-echo [1/4] photos 폴더 스캔 및 busan.json 자동 갱신...
-call node scripts\scan-photos.js
+echo [1/4] Scanning photos and updating busan.json...
+node scripts\scan-photos.js
 if errorlevel 1 (
   echo.
-  echo [오류] 스캔 실패. Node.js가 설치되어 있는지 확인하세요.
-  echo        https://nodejs.org 에서 LTS 버전 설치 후 재시도하세요.
+  echo [ERROR] scan-photos.js failed.
+  echo Please check: node is installed (https://nodejs.org)
   pause
   exit /b 1
 )
 
 echo.
-echo [2/4] Git 변경사항 확인...
+echo [2/4] Git status...
 git status --short
 
 echo.
-echo [3/4] Git 커밋 + GitHub Push...
+echo [3/4] Git add + commit + push...
 git add .
-git commit -m "deploy: photos and data update" 2>nul || echo (변경사항 없음, 커밋 건너뜀)
+git commit -m "deploy: photos and data update"
+if errorlevel 1 (
+  echo [INFO] Nothing to commit, skipping...
+)
 git push origin main
 if errorlevel 1 (
-  echo.
-  echo [경고] Git push 실패. 인터넷 연결 또는 인증을 확인하세요.
-  echo         Cloudflare 배포는 계속 진행합니다.
+  echo [WARNING] Git push failed. Check network or auth.
+  echo Continuing Cloudflare deploy...
 )
 
 echo.
-echo [4/4] Cloudflare Pages 배포...
-call npx wrangler pages deploy public --project-name=sj-360-apt-vr --branch=main --commit-dirty=true
+echo [4/4] Cloudflare Pages deploy...
+npx wrangler pages deploy public --project-name=sj-360-apt-vr --branch=main --commit-dirty=true
 if errorlevel 1 (
   echo.
-  echo [오류] Cloudflare 배포 실패.
-  echo        npx wrangler whoami 로 인증 상태를 확인하세요.
+  echo [ERROR] Cloudflare deploy failed.
+  echo Run: npx wrangler whoami
   pause
   exit /b 1
 )
 
 echo.
 echo ============================================
-echo  배포 완료!
+echo  Deploy complete!
 echo  https://sj-360-apt-vr.pages.dev/
 echo ============================================
 pause

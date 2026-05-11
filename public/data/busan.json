@@ -223,32 +223,117 @@
         {
           "id": "101",
           "name": "101동",
-          "captured": false,
-          "scenes": []
+          "captured": true,
+          "scenes": [
+            {
+              "height": "30m",
+              "file": "101 30.JPG"
+            },
+            {
+              "height": "60m",
+              "file": "101 60.JPG"
+            },
+            {
+              "height": "90m",
+              "file": "101 90.JPG"
+            },
+            {
+              "height": "120m",
+              "file": "101 120.JPG"
+            }
+          ]
         },
         {
           "id": "102",
           "name": "102동",
-          "captured": false,
-          "scenes": []
+          "captured": true,
+          "scenes": [
+            {
+              "height": "30m",
+              "file": "102 30.JPG"
+            },
+            {
+              "height": "60m",
+              "file": "102 60.JPG"
+            },
+            {
+              "height": "90m",
+              "file": "102 90.JPG"
+            },
+            {
+              "height": "120m",
+              "file": "102 120.JPG"
+            }
+          ]
         },
         {
           "id": "103",
           "name": "103동",
-          "captured": false,
-          "scenes": []
+          "captured": true,
+          "scenes": [
+            {
+              "height": "30m",
+              "file": "103 30.JPG"
+            },
+            {
+              "height": "60m",
+              "file": "103 60.JPG"
+            },
+            {
+              "height": "90m",
+              "file": "103 90.JPG"
+            },
+            {
+              "height": "120m",
+              "file": "103 120.JPG"
+            }
+          ]
         },
         {
           "id": "104",
           "name": "104동",
-          "captured": false,
-          "scenes": []
+          "captured": true,
+          "scenes": [
+            {
+              "height": "30m",
+              "file": "104 30.JPG"
+            },
+            {
+              "height": "60m",
+              "file": "104 60.JPG"
+            },
+            {
+              "height": "90m",
+              "file": "104 90.JPG"
+            },
+            {
+              "height": "120m",
+              "file": "104 120.JPG"
+            }
+          ]
         },
         {
           "id": "105",
           "name": "105동",
-          "captured": false,
-          "scenes": []
+          "captured": true,
+          "scenes": [
+            {
+              "height": "30m",
+              "file": "105 30.JPG"
+            },
+            {
+              "height": "60m",
+              "file": "105 60.JPG"
+            },
+            {
+              "height": "90m",
+              "file": "105 90.JPG"
+            },
+            {
+              "height": "120m",
+              "file": "105 120.JPG"
+            }
+          ]
         }
       ]
     },
@@ -322,38 +407,164 @@
         {
           "id": "101",
           "name": "101동",
-          "captured": false,
-          "scenes": []
+          "captured": true,
+          "scenes": [
+            {
+              "height": "30m",
+              "file": "101 30.JPG"
+            },
+            {
+              "height": "60m",
+              "file": "101 60.JPG"
+            },
+            {
+              "height": "90m",
+              "file": "101 90.JPG"
+            },
+            {
+              "height": "120m",
+              "file": "101 120.JPG"
+            },
+            {
+              "height": "150m",
+              "file": "101 150.JPG"
+            }
+          ]
         },
         {
           "id": "102",
           "name": "102동",
-          "captured": false,
-          "scenes": []
+          "captured": true,
+          "scenes": [
+            {
+              "height": "30m",
+              "file": "102 30.JPG"
+            },
+            {
+              "height": "60m",
+              "file": "102 60.JPG"
+            },
+            {
+              "height": "90m",
+              "file": "102 90.JPG"
+            },
+            {
+              "height": "120m",
+              "file": "102 120.JPG"
+            },
+            {
+              "height": "150m",
+              "file": "102 150.JPG"
+            }
+          ]
         },
         {
           "id": "103",
           "name": "103동",
-          "captured": false,
-          "scenes": []
+          "captured": true,
+          "scenes": [
+            {
+              "height": "30m",
+              "file": "103 30.JPG"
+            },
+            {
+              "height": "60m",
+              "file": "103 60.JPG"
+            },
+            {
+              "height": "90m",
+              "file": "103 90.JPG"
+            },
+            {
+              "height": "120m",
+              "file": "103 120.JPG"
+            },
+            {
+              "height": "150m",
+              "file": "103 150.JPG"
+            }
+          ]
         },
         {
           "id": "104",
           "name": "104동",
-          "captured": false,
-          "scenes": []
+          "captured": true,
+          "scenes": [
+            {
+              "height": "30m",
+              "file": "104 30.JPG"
+            },
+            {
+              "height": "60m",
+              "file": "104 60.JPG"
+            },
+            {
+              "height": "90m",
+              "file": "104 90.JPG"
+            },
+            {
+              "height": "120m",
+              "file": "104 120.JPG"
+            },
+            {
+              "height": "150m",
+              "file": "104 150.JPG"
+            }
+          ]
         },
         {
           "id": "105",
           "name": "105동",
-          "captured": false,
-          "scenes": []
+          "captured": true,
+          "scenes": [
+            {
+              "height": "30m",
+              "file": "105 30.JPG"
+            },
+            {
+              "height": "60m",
+              "file": "105 60.JPG"
+            },
+            {
+              "height": "90m",
+              "file": "105 90.JPG"
+            },
+            {
+              "height": "120m",
+              "file": "105 120.JPG"
+            },
+            {
+              "height": "150m",
+              "file": "105 150.JPG"
+            }
+          ]
         },
         {
           "id": "106",
           "name": "106동",
-          "captured": false,
-          "scenes": []
+          "captured": true,
+          "scenes": [
+            {
+              "height": "30m",
+              "file": "106 30.JPG"
+            },
+            {
+              "height": "60m",
+              "file": "106 60.JPG"
+            },
+            {
+              "height": "90m",
+              "file": "106 90.JPG"
+            },
+            {
+              "height": "120m",
+              "file": "106 120.JPG"
+            },
+            {
+              "height": "150m",
+              "file": "106 150.JPG"
+            }
+          ]
         }
       ]
     }

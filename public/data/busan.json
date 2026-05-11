@@ -7,14 +7,19 @@
       "name": "해운대구",
       "name_en": "Haeundae",
       "subtitle": "부산 동부 프리미엄 생활권",
-      "apartment_ids": ["venuv"]
+      "apartment_ids": [
+        "venuv",
+        "leel_centum"
+      ]
     },
     {
       "id": "suyeong",
       "name": "수영구",
       "name_en": "Suyeong",
       "subtitle": "광안리 오션뷰 생활권",
-      "apartment_ids": []
+      "apartment_ids": [
+        "summit_namcheon"
+      ]
     },
     {
       "id": "nam",
@@ -28,6 +33,7 @@
     "venuv": {
       "id": "venuv",
       "district_id": "haeundae",
+      "hosting": "panoee",
       "name": "베뉴브 해운대",
       "name_en": "VENUV Haeundae",
       "location": "부산광역시 해운대구 우동 1074번지 일원",
@@ -38,9 +44,21 @@
       "households_total": 660,
       "households_general": 629,
       "unit_breakdown": [
-        { "size": "59㎡", "type_count": "A·B 2개 타입", "households": 25 },
-        { "size": "84㎡", "type_count": "A·B·C·D·E 5개 타입", "households": 496 },
-        { "size": "99㎡", "type_count": "1개 타입", "households": 108 }
+        {
+          "size": "59㎡",
+          "type_count": "A·B 2개 타입",
+          "households": 25
+        },
+        {
+          "size": "84㎡",
+          "type_count": "A·B·C·D·E 5개 타입",
+          "households": 496
+        },
+        {
+          "size": "99㎡",
+          "type_count": "1개 타입",
+          "households": 108
+        }
       ],
       "sale_status": "분양 완료",
       "move_in": "2029년 5월 예정",
@@ -66,11 +84,26 @@
           "name": "101동",
           "captured": true,
           "scenes": [
-            { "height": "30m", "url": "https://panoee.live/eflhwsu/post-101?sceneId=2179" },
-            { "height": "50m", "url": "https://panoee.live/eflhwsu/post-101?sceneId=2180" },
-            { "height": "70m", "url": "https://panoee.live/eflhwsu/post-101?sceneId=2181" },
-            { "height": "90m", "url": "https://panoee.live/eflhwsu/post-101?sceneId=2182" },
-            { "height": "110m", "url": "https://panoee.live/eflhwsu/post-101?sceneId=2183" }
+            {
+              "height": "30m",
+              "url": "https://panoee.live/eflhwsu/post-101?sceneId=2179"
+            },
+            {
+              "height": "50m",
+              "url": "https://panoee.live/eflhwsu/post-101?sceneId=2180"
+            },
+            {
+              "height": "70m",
+              "url": "https://panoee.live/eflhwsu/post-101?sceneId=2181"
+            },
+            {
+              "height": "90m",
+              "url": "https://panoee.live/eflhwsu/post-101?sceneId=2182"
+            },
+            {
+              "height": "110m",
+              "url": "https://panoee.live/eflhwsu/post-101?sceneId=2183"
+            }
           ]
         },
         {
@@ -78,11 +111,26 @@
           "name": "102동",
           "captured": true,
           "scenes": [
-            { "height": "30m", "url": "https://panoee.live/eflhwsu/post-102?sceneId=2160" },
-            { "height": "50m", "url": "https://panoee.live/eflhwsu/post-102?sceneId=2161" },
-            { "height": "70m", "url": "https://panoee.live/eflhwsu/post-102?sceneId=2162" },
-            { "height": "90m", "url": "https://panoee.live/eflhwsu/post-102?sceneId=2163" },
-            { "height": "110m", "url": "https://panoee.live/eflhwsu/post-102?sceneId=2164" }
+            {
+              "height": "30m",
+              "url": "https://panoee.live/eflhwsu/post-102?sceneId=2160"
+            },
+            {
+              "height": "50m",
+              "url": "https://panoee.live/eflhwsu/post-102?sceneId=2161"
+            },
+            {
+              "height": "70m",
+              "url": "https://panoee.live/eflhwsu/post-102?sceneId=2162"
+            },
+            {
+              "height": "90m",
+              "url": "https://panoee.live/eflhwsu/post-102?sceneId=2163"
+            },
+            {
+              "height": "110m",
+              "url": "https://panoee.live/eflhwsu/post-102?sceneId=2164"
+            }
           ]
         },
         {
@@ -90,12 +138,222 @@
           "name": "103동",
           "captured": true,
           "scenes": [
-            { "height": "30m", "url": "https://panoee.live/eflhwsu/post-103?sceneId=2165" },
-            { "height": "50m", "url": "https://panoee.live/eflhwsu/post-103?sceneId=2166" },
-            { "height": "70m", "url": "https://panoee.live/eflhwsu/post-103?sceneId=2167" },
-            { "height": "90m", "url": "https://panoee.live/eflhwsu/post-103?sceneId=2168" },
-            { "height": "110m", "url": "https://panoee.live/eflhwsu/post-103?sceneId=2169" }
+            {
+              "height": "30m",
+              "url": "https://panoee.live/eflhwsu/post-103?sceneId=2165"
+            },
+            {
+              "height": "50m",
+              "url": "https://panoee.live/eflhwsu/post-103?sceneId=2166"
+            },
+            {
+              "height": "70m",
+              "url": "https://panoee.live/eflhwsu/post-103?sceneId=2167"
+            },
+            {
+              "height": "90m",
+              "url": "https://panoee.live/eflhwsu/post-103?sceneId=2168"
+            },
+            {
+              "height": "110m",
+              "url": "https://panoee.live/eflhwsu/post-103?sceneId=2169"
+            }
           ]
+        }
+      ]
+    },
+    "summit_namcheon": {
+      "id": "summit_namcheon",
+      "district_id": "suyeong",
+      "hosting": "self",
+      "photos_folder": "남천써밋",
+      "name": "써밋 리미티드 남천",
+      "name_en": "Summit Limited Namcheon",
+      "short_name": "남천써밋",
+      "location": "부산광역시 수영구 남천동 545-2번지 일원 (옛 메가마트 부지)",
+      "developer": "큐브광안PFV",
+      "constructor": "대우건설",
+      "project_type": "남천동 메가마트 부지 재개발",
+      "scale": "지하 5층 ~ 지상 40층 / 5개동",
+      "households_total": 835,
+      "households_general": 835,
+      "parking_total": 1998,
+      "unit_breakdown": [
+        {
+          "size": "84㎡",
+          "type_count": "A·B 2개 타입",
+          "households": 165
+        },
+        {
+          "size": "112~144㎡",
+          "type_count": "중대형 5개 타입",
+          "households": 350
+        },
+        {
+          "size": "177~243㎡",
+          "type_count": "대형·펜트하우스 7개 타입",
+          "households": 320
+        }
+      ],
+      "sale_schedule": {
+        "announcement": "2025년 7월 31일 모집공고",
+        "subscription": "2025년 8월 11일 ~ 8월 13일",
+        "winner_announcement": "2025년 8월 20일",
+        "contract": "2025년 9월 1일 ~ 3일"
+      },
+      "sale_status": "분양 완료",
+      "move_in": "2029년 7월 예정",
+      "highlights": [
+        "광안대교 정면 조망의 독보적 입지",
+        "부산 리치벨트 중심축, 수영구 바다라인 시작점",
+        "해운대 엘시티 이후 10년 만의 부산 하이엔드",
+        "옛 메가마트 부지 대형 필지 (남천동 핵심 입지)",
+        "레스 아키텍츠(Less Architects) 특화 설계 + 인피니티 루프 조형물",
+        "주차 1,998대 / 게스트하우스 / 피트니스 / 골프연습장"
+      ],
+      "transit_infra": [
+        "황령대로 우측, 광안대교 인접",
+        "남천초 도보 15분 (16학교군: 동아중·수영중·한바다중)",
+        "수영구 바다라인 (남천보라·뉴비치 ~ 삼익비치 그랑자이 연결)",
+        "광안리 해수욕장 도보권",
+        "해운대고등학군 (부산동여고·덕문여고·해강고·센텀고)"
+      ],
+      "official_url": "https://www.prugio.com/summit/limited",
+      "buildings_data": [
+        {
+          "id": "101",
+          "name": "101동",
+          "captured": false,
+          "scenes": []
+        },
+        {
+          "id": "102",
+          "name": "102동",
+          "captured": false,
+          "scenes": []
+        },
+        {
+          "id": "103",
+          "name": "103동",
+          "captured": false,
+          "scenes": []
+        },
+        {
+          "id": "104",
+          "name": "104동",
+          "captured": false,
+          "scenes": []
+        },
+        {
+          "id": "105",
+          "name": "105동",
+          "captured": false,
+          "scenes": []
+        }
+      ]
+    },
+    "leel_centum": {
+      "id": "leel_centum",
+      "district_id": "haeundae",
+      "hosting": "self",
+      "photos_folder": "센텀르엘",
+      "name": "르엘 리버파크 센텀",
+      "name_en": "LE'EL Riverpark Centum",
+      "short_name": "센텀르엘",
+      "location": "부산광역시 해운대구 재송동 856-6번지 일원 (옛 한진CY부지)",
+      "developer": "백송홀딩스",
+      "constructor": "롯데건설",
+      "project_type": "부산 한진CY부지 복합개발사업",
+      "scale": "지하 6층 / 지상 67층(5개동) + 48층(1개동)",
+      "households_total": 2070,
+      "households_general": 2070,
+      "unit_breakdown": [
+        {
+          "size": "84㎡",
+          "type_count": "1개 타입",
+          "households": 120
+        },
+        {
+          "size": "104㎡",
+          "type_count": "A·B·C·D 4개 타입",
+          "households": 564
+        },
+        {
+          "size": "125㎡",
+          "type_count": "A·B·C·D 4개 타입",
+          "households": 696
+        },
+        {
+          "size": "154㎡",
+          "type_count": "대형",
+          "households": 684
+        },
+        {
+          "size": "244㎡",
+          "type_count": "펜트하우스",
+          "households": 6
+        }
+      ],
+      "sale_schedule": {
+        "announcement": "2025년 7월",
+        "subscription": "2025년 7월 22일 ~ 7월 23일",
+        "winner_announcement": "2025년 7월 29일",
+        "contract": "2025년 8월 11일 ~ 13일"
+      },
+      "sale_status": "분양 완료",
+      "move_in": "2030년 5월 예정",
+      "highlights": [
+        "롯데건설 하이엔드 브랜드 르엘 - 서울 외 최초 적용 (강남권 외 첫 진출)",
+        "지상 67층 초고층 5개동 + 48층 1개동 = 부산 센텀시티 랜드마크",
+        "총 2,070세대 초대형 단지, 94%가 104㎡ 이상 중대형",
+        "리버뷰 아쿠아풀 + 테라피 스파 + 프리미어 골프클럽 + 3레인 실내 수영장",
+        "수영강 직접 조망 (3레인 수영장 수영강뷰 설계)",
+        "커뮤니티 관리비 2년 무상 운영 (입주 즉시 이용)"
+      ],
+      "transit_infra": [
+        "수영강 인접 (원형육교 수영강 휴먼브릿지로 직결)",
+        "신세계백화점·벡스코·영화의전당·부산시립미술관 도보권",
+        "센텀시티 핵심 입지 (해운대구 재송동)",
+        "더샵 센텀파크·센텀 e편한세상 등 센텀 주거 벨트",
+        "공공기여시설(원형육교+숲)로 수영강 자연 접근성 강화"
+      ],
+      "official_url": "https://www.leel-centum.com/",
+      "buildings_data": [
+        {
+          "id": "101",
+          "name": "101동",
+          "captured": false,
+          "scenes": []
+        },
+        {
+          "id": "102",
+          "name": "102동",
+          "captured": false,
+          "scenes": []
+        },
+        {
+          "id": "103",
+          "name": "103동",
+          "captured": false,
+          "scenes": []
+        },
+        {
+          "id": "104",
+          "name": "104동",
+          "captured": false,
+          "scenes": []
+        },
+        {
+          "id": "105",
+          "name": "105동",
+          "captured": false,
+          "scenes": []
+        },
+        {
+          "id": "106",
+          "name": "106동",
+          "captured": false,
+          "scenes": []
         }
       ]
     }

@@ -74,7 +74,7 @@
       <div class="section-inner">
         <h2 class="section-title">단지 특징</h2>
         <div class="highlights-grid">${cards}</div>
-        <p class="transit-info">${apt.transit}</p>
+        ${apt.transit ? `<p class="transit-info">${apt.transit}</p>` : ''}
       </div>
     `;
   }
@@ -173,7 +173,7 @@
           const btn = document.createElement('button');
           btn.className = 'height-btn';
           btn.textContent = scene.height;
-          btn.onclick = () => tryViewVR(scene, b.name, btn);
+          btn.onclick = () => tryViewVR(scene, b, apt, btn);
           btnWrap.appendChild(btn);
         });
         card.appendChild(btnWrap);
@@ -202,20 +202,20 @@
 
   let _activeBtn = null;
 
-  function tryViewVR(scene, buildingName, btn) {
+  function tryViewVR(scene, building, apt, btn) {
     const unlocked = sessionStorage.getItem('sj_unlocked') === 'true';
     const viewCount = parseInt(sessionStorage.getItem('sj_view_count') || '0', 10);
 
     if (unlocked) {
       setActiveBtn(btn);
-      showVR(scene, buildingName);
+      showVR(scene, building, apt);
       return;
     }
 
     if (viewCount < FREE_VIEW_LIMIT) {
       sessionStorage.setItem('sj_view_count', String(viewCount + 1));
       setActiveBtn(btn);
-      showVR(scene, buildingName);
+      showVR(scene, building, apt);
       return;
     }
 
@@ -230,18 +230,48 @@
     btn.classList.add('active');
   }
 
-  function showVR(scene, buildingName) {
+  function showVR(scene, building, apt) {
     const viewer = document.getElementById('viewer-section');
-    const embedUrl = scene.url + '&embed=true';
-    viewer.innerHTML = `
-      <div class="section-inner">
-        <p class="viewer-info">${buildingName} 지상 ${scene.height} 360 조망</p>
-        <div class="viewer-active">
-          <iframe src="${embedUrl}" class="viewer-iframe" allowfullscreen frameborder="0"
-            allow="vr; xr; accelerometer; gyroscope; fullscreen"></iframe>
+
+    if (apt.hosting === 'self') {
+      // 자체 호스팅 — Pannellum
+      const rawPath = `photos/${apt.photos_folder}/${building.id}/${scene.file}`;
+      const imagePath = encodeURI(rawPath); // 한글 폴더명 자동 인코딩
+
+      viewer.innerHTML = `
+        <div class="section-inner">
+          <p class="viewer-info">${building.name} 지상 ${scene.height} 360 조망</p>
+          <div class="viewer-active">
+            <div id="pannellum-viewer" style="width:100%;height:600px;"></div>
+          </div>
         </div>
-      </div>
-    `;
+      `;
+
+      pannellum.viewer('pannellum-viewer', {
+        type: 'equirectangular',
+        panorama: imagePath,
+        autoLoad: true,
+        autoRotate: -2,
+        compass: false,
+        showControls: true,
+        hfov: 100,
+        minHfov: 50,
+        maxHfov: 120
+      });
+    } else {
+      // Panoee 기존 방식 (베뉴브 호환)
+      const embedUrl = scene.url + '&embed=true';
+      viewer.innerHTML = `
+        <div class="section-inner">
+          <p class="viewer-info">${building.name} 지상 ${scene.height} 360 조망</p>
+          <div class="viewer-active">
+            <iframe src="${embedUrl}" class="viewer-iframe" allowfullscreen frameborder="0"
+              allow="vr; xr; accelerometer; gyroscope; fullscreen"></iframe>
+          </div>
+        </div>
+      `;
+    }
+
     viewer.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 

@@ -232,15 +232,23 @@
 
   function showVR(scene, building, apt) {
     const viewer = document.getElementById('viewer-section');
+    const apartmentTitle = apt.short_name || apt.name;
 
     if (apt.hosting === 'self') {
       // 자체 호스팅 — Pannellum
       const rawPath = `photos/${apt.photos_folder}/${building.id}/${scene.file}`;
       const imagePath = encodeURI(rawPath); // 한글 폴더명 자동 인코딩
+      const fullTitle = `${apartmentTitle} ${building.name} ${scene.height}`;
 
       viewer.innerHTML = `
         <div class="section-inner">
-          <p class="viewer-info">${building.name} 지상 ${scene.height} 360 조망</p>
+          <div class="viewer-info-bar">
+            <span class="viewer-info-apartment">${apartmentTitle}</span>
+            <span class="viewer-info-divider">·</span>
+            <span class="viewer-info-building">${building.name}</span>
+            <span class="viewer-info-divider">·</span>
+            <span class="viewer-info-height">지상 ${scene.height}</span>
+          </div>
           <div class="viewer-active">
             <div id="pannellum-viewer" style="width:100%;height:600px;"></div>
           </div>
@@ -250,6 +258,7 @@
       pannellum.viewer('pannellum-viewer', {
         type: 'equirectangular',
         panorama: imagePath,
+        title: fullTitle,
         autoLoad: true,
         autoRotate: -2,
         compass: false,
@@ -259,11 +268,17 @@
         maxHfov: 120
       });
     } else {
-      // Panoee 기존 방식 (베뉴브 호환)
+      // Panoee 방식 (fallback)
       const embedUrl = scene.url + '&embed=true';
       viewer.innerHTML = `
         <div class="section-inner">
-          <p class="viewer-info">${building.name} 지상 ${scene.height} 360 조망</p>
+          <div class="viewer-info-bar">
+            <span class="viewer-info-apartment">${apartmentTitle}</span>
+            <span class="viewer-info-divider">·</span>
+            <span class="viewer-info-building">${building.name}</span>
+            <span class="viewer-info-divider">·</span>
+            <span class="viewer-info-height">지상 ${scene.height}</span>
+          </div>
           <div class="viewer-active">
             <iframe src="${embedUrl}" class="viewer-iframe" allowfullscreen frameborder="0"
               allow="vr; xr; accelerometer; gyroscope; fullscreen"></iframe>

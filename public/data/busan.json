@@ -33,7 +33,9 @@
     "venuv": {
       "id": "venuv",
       "district_id": "haeundae",
-      "hosting": "panoee",
+      "hosting": "self",
+      "photos_folder": "베뉴브 해운대",
+      "short_name": "베뉴브 해운대",
       "name": "베뉴브 해운대",
       "name_en": "VENUV Haeundae",
       "location": "부산광역시 해운대구 우동 1074번지 일원",
@@ -86,23 +88,23 @@
           "scenes": [
             {
               "height": "30m",
-              "url": "https://panoee.live/eflhwsu/post-101?sceneId=2179"
+              "file": "101 30.JPG"
             },
             {
               "height": "50m",
-              "url": "https://panoee.live/eflhwsu/post-101?sceneId=2180"
+              "file": "101 50.JPG"
             },
             {
               "height": "70m",
-              "url": "https://panoee.live/eflhwsu/post-101?sceneId=2181"
+              "file": "101 70.JPG"
             },
             {
               "height": "90m",
-              "url": "https://panoee.live/eflhwsu/post-101?sceneId=2182"
+              "file": "101 90.JPG"
             },
             {
               "height": "110m",
-              "url": "https://panoee.live/eflhwsu/post-101?sceneId=2183"
+              "file": "101 110.JPG"
             }
           ]
         },
@@ -113,23 +115,23 @@
           "scenes": [
             {
               "height": "30m",
-              "url": "https://panoee.live/eflhwsu/post-102?sceneId=2160"
+              "file": "102 30.JPG"
             },
             {
               "height": "50m",
-              "url": "https://panoee.live/eflhwsu/post-102?sceneId=2161"
+              "file": "102 50.JPG"
             },
             {
               "height": "70m",
-              "url": "https://panoee.live/eflhwsu/post-102?sceneId=2162"
+              "file": "102 70.JPG"
             },
             {
               "height": "90m",
-              "url": "https://panoee.live/eflhwsu/post-102?sceneId=2163"
+              "file": "102 90.JPG"
             },
             {
               "height": "110m",
-              "url": "https://panoee.live/eflhwsu/post-102?sceneId=2164"
+              "file": "102 110.JPG"
             }
           ]
         },
@@ -140,23 +142,23 @@
           "scenes": [
             {
               "height": "30m",
-              "url": "https://panoee.live/eflhwsu/post-103?sceneId=2165"
+              "file": "103 30.JPG"
             },
             {
               "height": "50m",
-              "url": "https://panoee.live/eflhwsu/post-103?sceneId=2166"
+              "file": "103 50.JPG"
             },
             {
               "height": "70m",
-              "url": "https://panoee.live/eflhwsu/post-103?sceneId=2167"
+              "file": "103 70.JPG"
             },
             {
               "height": "90m",
-              "url": "https://panoee.live/eflhwsu/post-103?sceneId=2168"
+              "file": "103 90.JPG"
             },
             {
               "height": "110m",
-              "url": "https://panoee.live/eflhwsu/post-103?sceneId=2169"
+              "file": "103 110.JPG"
             }
           ]
         }

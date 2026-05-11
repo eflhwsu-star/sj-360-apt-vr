@@ -1,68 +1,82 @@
 // compress-photos.js
-// Cloudflare Pages 25 MiB 제한 대응 — 사진을 웹 최적화 크기로 압축합니다.
-// 원본은 그대로 보존, public/photos/ 내 파일만 in-place 압축.
-// 목표: 각 파일 < 20 MiB (Pannellum 웹 뷰어에 충분한 해상도 유지)
+// Cloudflare Pages 25 MiB 제한 대응 + Pannellum 로딩 최적화
+// 목표: 모든 사진 2.5 MiB 이하 (로딩 4-5초 목표)
+// ⚠️ Windows 한글 경로 대응: 파일 경로 대신 Buffer 방식 사용
 
 const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
 const photosDir = path.join(__dirname, '..', 'public', 'photos');
-const MAX_WIDTH = 8192;   // 8K 이하로 리샘플링 (360° 뷰어 최적 해상도)
-const JPEG_QUALITY = 82;  // 품질 82% — 시각적 차이 없음, 파일 크기 대폭 감소
+const TARGET_MAX_SIZE = 2.5 * 1024 * 1024; // 2.5 MiB
+const MAX_WIDTH = 8192; // 8K — Pannellum 웹 뷰어 최적 해상도
 
-let total = 0;
-let compressed = 0;
-let skipped = 0;
-let errors = 0;
-
-async function compressAll() {
-  const files = [];
-
-  function walk(dir) {
-    for (const entry of fs.readdirSync(dir)) {
-      const full = path.join(dir, entry);
-      if (fs.statSync(full).isDirectory()) {
-        walk(full);
-      } else if (/\.(jpg|jpeg)$/i.test(entry)) {
-        files.push(full);
-      }
-    }
+async function compressIfNeeded(filePath) {
+  const stat = fs.statSync(filePath);
+  if (stat.size <= TARGET_MAX_SIZE) {
+    return { compressed: false, sizeBefore: stat.size, sizeAfter: stat.size };
   }
-
-  walk(photosDir);
-  total = files.length;
-  console.log(`\n🔍 총 ${total}개 JPG 발견\n`);
-
-  for (const file of files) {
-    const sizeMB = (fs.statSync(file).size / 1024 / 1024).toFixed(1);
-    const rel = path.relative(photosDir, file);
-
-    if (parseFloat(sizeMB) < 20) {
-      console.log(`  ✓ 이미 작음 (${sizeMB} MiB) — ${rel}`);
-      skipped++;
-      continue;
-    }
-
-    try {
-      const tmp = file + '.tmp';
-      await sharp(file)
-        .resize({ width: MAX_WIDTH, withoutEnlargement: true })
-        .jpeg({ quality: JPEG_QUALITY, progressive: true })
-        .toFile(tmp);
-
-      const newSizeMB = (fs.statSync(tmp).size / 1024 / 1024).toFixed(1);
-      fs.renameSync(tmp, file);
-      console.log(`  ✅ 압축 완료: ${sizeMB} → ${newSizeMB} MiB — ${rel}`);
-      compressed++;
-    } catch (e) {
-      console.log(`  ❌ 실패: ${rel} — ${e.message}`);
-      if (fs.existsSync(file + '.tmp')) fs.unlinkSync(file + '.tmp');
-      errors++;
-    }
-  }
-
-  console.log(`\n📊 결과: ${compressed}개 압축 / ${skipped}개 스킵 / ${errors}개 오류 (총 ${total}개)`);
+  const sizeBefore = stat.size;
+  // Buffer 방식: Windows 한글 경로 sharp 오픈 오류 우회
+  const inputBuffer = fs.readFileSync(filePath);
+  const outputBuffer = await sharp(inputBuffer, { failOn: 'none' })
+    .resize({ width: MAX_WIDTH, withoutEnlargement: true })
+    .jpeg({ quality: 75, mozjpeg: true, progressive: true })
+    .toBuffer();
+  fs.writeFileSync(filePath, outputBuffer);
+  const sizeAfter = fs.statSync(filePath).size;
+  return { compressed: true, sizeBefore, sizeAfter };
 }
 
-compressAll().catch(console.error);
+function walk(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).flatMap(item => {
+    const full = path.join(dir, item);
+    const stat = fs.statSync(full);
+    if (stat.isDirectory()) return walk(full);
+    if (/\.(jpg|jpeg)$/i.test(item)) return [full];
+    return [];
+  });
+}
+
+async function main() {
+  let totalCompressed = 0;
+  let totalSaved = 0;
+  const allFiles = walk(photosDir);
+
+  if (allFiles.length === 0) {
+    console.log('No JPG files found in public/photos/');
+    return;
+  }
+
+  console.log(`\n🔍 총 ${allFiles.length}개 JPG 검사 중...\n`);
+
+  for (const file of allFiles) {
+    try {
+      const result = await compressIfNeeded(file);
+      if (result.compressed) {
+        const before = (result.sizeBefore / 1024 / 1024).toFixed(1);
+        const after = (result.sizeAfter / 1024 / 1024).toFixed(1);
+        const rel = path.relative(photosDir, file);
+        console.log(`  ✅ ${rel}: ${before}MB → ${after}MB`);
+        totalCompressed++;
+        totalSaved += result.sizeBefore - result.sizeAfter;
+      }
+    } catch (err) {
+      const rel = path.relative(photosDir, file);
+      console.error(`  ❌ ${rel}: ${err.message}`);
+    }
+  }
+
+  if (totalCompressed === 0) {
+    console.log('  ✓ All files already within 2.5 MiB target.');
+  } else {
+    const savedMB = (totalSaved / 1024 / 1024).toFixed(1);
+    console.log(`\n📊 압축 완료: ${totalCompressed}장, ${savedMB}MB 절감`);
+  }
+}
+
+main().catch(err => {
+  console.error('Compression failed:', err);
+  process.exit(1);
+});

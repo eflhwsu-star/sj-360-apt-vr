@@ -8,7 +8,18 @@ cd /d "%~dp0"
 echo Working directory: %CD%
 echo.
 
-echo [1/4] Scanning photos and updating busan.json...
+echo [1/5] Compressing oversized photos (Cloudflare 25 MiB limit)...
+node scripts\compress-photos.js
+if errorlevel 1 (
+  echo.
+  echo [ERROR] compress-photos.js failed.
+  echo Please check: node_modules\sharp is installed (run: npm install)
+  pause
+  exit /b 1
+)
+
+echo.
+echo [2/5] Scanning photos and updating busan.json...
 node scripts\scan-photos.js
 if errorlevel 1 (
   echo.
@@ -19,11 +30,11 @@ if errorlevel 1 (
 )
 
 echo.
-echo [2/4] Git status...
+echo [3/5] Git status...
 git status --short
 
 echo.
-echo [3/4] Git add + commit + push...
+echo [4/5] Git add + commit + push...
 git add .
 git commit -m "deploy: photos and data update"
 if errorlevel 1 (
@@ -36,7 +47,7 @@ if errorlevel 1 (
 )
 
 echo.
-echo [4/4] Cloudflare Pages deploy...
+echo [5/5] Cloudflare Pages deploy...
 npx wrangler pages deploy public --project-name=sj-360-apt-vr --branch=main --commit-dirty=true
 if errorlevel 1 (
   echo.

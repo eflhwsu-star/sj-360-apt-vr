@@ -8,7 +8,7 @@
       "name_en": "Haeundae",
       "subtitle": "부산 동부 프리미엄 생활권",
       "apartment_ids": [
-        "venuv",
+        "venuve",
         "leel_centum"
       ]
     },
@@ -30,8 +30,8 @@
     }
   ],
   "apartments": {
-    "venuv": {
-      "id": "venuv",
+    "venuve": {
+      "id": "venuve",
       "district_id": "haeundae",
       "hosting": "self",
       "photos_folder": "베뉴브 해운대",

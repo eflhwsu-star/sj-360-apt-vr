@@ -106,67 +106,29 @@
     }
     .hw-pano-placeholder p { font-size:14px; color:var(--text-muted); }
 
-    /* ── Facilities ── */
-    .hw-fac-grid {
-      display:grid; grid-template-columns:repeat(5,1fr); gap:12px;
+    /* ── Facilities VR ── */
+    .hw-fac-viewer-area {
+      margin-top:24px; border:1px solid #E5DDC8;
+      border-radius:var(--radius-md); overflow:hidden;
     }
-    .hw-fac-card {
-      background:var(--bg-card); border:1px solid var(--border);
-      border-radius:var(--radius-md); overflow:hidden; cursor:pointer;
-      transition:box-shadow .2s, transform .2s;
+    .hw-fac-placeholder {
+      height:340px; display:flex; align-items:center; justify-content:center;
+      background:#f8f5f0;
     }
-    .hw-fac-card:hover {
-      box-shadow:var(--shadow-md); transform:translateY(-2px);
-    }
-    .hw-fac-thumb {
-      width:100%; aspect-ratio:4/3; object-fit:cover;
-      background:var(--bg-warm);
-      display:block;
-    }
-    .hw-fac-thumb-placeholder {
-      width:100%; aspect-ratio:4/3;
-      background:var(--bg-warm);
-      display:flex; align-items:center; justify-content:center;
-    }
-    .hw-fac-thumb-placeholder span { font-size:24px; }
-    .hw-fac-name {
-      padding:10px 12px;
-      font-size:13px; color:var(--text-primary); font-weight:500;
-    }
-    .hw-fac-count { font-size:11px; color:var(--text-muted); }
+    .hw-fac-placeholder p { font-size:14px; color:var(--text-muted); }
 
-    /* Lightbox */
-    .hw-lightbox {
-      position:fixed; inset:0; z-index:2000;
-      background:rgba(0,0,0,.92);
-      display:none; align-items:center; justify-content:center;
+    /* ── Spinner (VR 로딩 중) ── */
+    .hw-spinner-overlay {
+      position:absolute; inset:0; z-index:10;
+      display:flex; align-items:center; justify-content:center;
+      background:rgba(248,245,240,.85);
     }
-    .hw-lightbox.open { display:flex; }
-    .hw-lb-img {
-      max-width:90vw; max-height:88vh; object-fit:contain;
-      border-radius:var(--radius-sm);
+    .hw-spinner {
+      width:32px; height:32px;
+      border:3px solid #E5DDC8; border-top-color:#B8861F;
+      border-radius:50%; animation:hwSpin .8s linear infinite;
     }
-    .hw-lb-close {
-      position:absolute; top:20px; right:24px;
-      background:none; border:none; color:#fff; font-size:28px;
-      cursor:pointer; padding:4px 10px; line-height:1;
-    }
-    .hw-lb-nav {
-      position:absolute; top:50%; transform:translateY(-50%);
-      background:rgba(255,255,255,.12); border:none; color:#fff;
-      font-size:24px; cursor:pointer;
-      padding:16px 14px; border-radius:4px;
-      transition:background .2s;
-    }
-    .hw-lb-nav:hover { background:rgba(255,255,255,.25); }
-    .hw-lb-prev { left:20px; }
-    .hw-lb-next { right:20px; }
-    .hw-lb-caption {
-      position:absolute; bottom:20px; left:50%; transform:translateX(-50%);
-      font-size:13px; color:#bbb;
-      background:rgba(0,0,0,.5); padding:6px 14px; border-radius:20px;
-      white-space:nowrap;
-    }
+    @keyframes hwSpin { to { transform:rotate(360deg); } }
 
     /* ── CTA ── */
     .hw-cta-wrap { background:var(--bg-warm); }
@@ -270,13 +232,8 @@
       .hw-ctrl-btns { flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; }
       .hw-btn       { flex-shrink:0; }
 
-      .hw-fac-grid  { grid-template-columns:repeat(2,1fr); gap:10px; }
-
       .hw-cta-btns  { flex-direction:column; }
       .hw-modal-card { padding:32px 20px; }
-    }
-    @media (max-width:480px) {
-      .hw-lb-nav { display:none; }
     }
   </style>
 </head>
@@ -400,11 +357,16 @@
     </div>
   </section>
 
-  <!-- E. Facilities -->
+  <!-- E. Facilities VR -->
   <section class="hw-section" style="background:var(--bg-card);">
     <div class="hw-inner">
       <h2 class="hw-section-title">부대시설 둘러보기</h2>
-      <div class="hw-fac-grid" id="facilityGrid"></div>
+      <div class="hw-ctrl-btns" id="facBtns" style="flex-wrap:wrap;gap:8px;"></div>
+      <div class="hw-fac-viewer-area" id="facViewerArea">
+        <div class="hw-fac-placeholder">
+          <p>위 버튼을 눌러 부대시설 360 VR을 시작하세요</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -460,15 +422,6 @@
     </div>
   </div>
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="hw-lightbox" role="dialog" aria-modal="true" aria-label="사진 보기">
-    <button class="hw-lb-close" onclick="closeLightbox()" aria-label="닫기">×</button>
-    <button class="hw-lb-nav hw-lb-prev" onclick="lbNav(-1)" aria-label="이전">&#8249;</button>
-    <img id="lbImg" class="hw-lb-img" src="" alt="">
-    <button class="hw-lb-nav hw-lb-next" onclick="lbNav(1)" aria-label="다음">&#8250;</button>
-    <p id="lbCaption" class="hw-lb-caption"></p>
-  </div>
-
   <script>
   (function () {
     'use strict';
@@ -490,17 +443,20 @@
       '106': { lines: ['1','2'],       heights: ['15','30','45','60'] }
     };
 
-    const facilities = [
-      { group: '문주',        files: ['문주.JPG'],                     icon: '🏛️' },
-      { group: '근린생활시설', files: ['근린생활시설 1.JPG', '근린생활시설 2.JPG'], icon: '🏢' },
-      { group: '잔디마당',    files: ['잔디마당.JPG'],               icon: '🌿' },
-      { group: '어린이 놀이터', files: ['어린이 놀이터 1.JPG', '어린이 놀이터 2.JPG'], icon: '🏡' },
-      { group: '커뮤니티 시설', files: ['커뮤니티 시설.JPG'], icon: '🏋️' }
+    const facilityVR = [
+      { name: '단지 문주',             file: '한화포레나 부산대연 문주.JPG' },
+      { name: '근린생활시설 (정면 1)', file: '근린생활시설 정면 1.JPG' },
+      { name: '근린생활시설 (정면 2)', file: '근린생활시설 정면 2.JPG' },
+      { name: '잔디마당',              file: '잔디마당.JPG' },
+      { name: '어린이 놀이터 1',       file: '어린이 놀이터 1.JPG' },
+      { name: '어린이 놀이터 2',       file: '어린이 놀이터 2.JPG' },
+      { name: '커뮤니티 시설',         file: '커뮤니티 시설 건물.JPG' }
     ];
 
     /* ── State ── */
     let state = { dong: null, line: null, height: null };
     let pannellumViewer = null;
+    let facPannellumViewer = null;
     let pendingView = null;   // { dong, line, height } awaiting auth
 
     /* ── Auth helpers ── */
@@ -635,7 +591,12 @@
 
       const panoDiv = document.createElement('div');
       panoDiv.id = 'pannellumEl';
-      panoDiv.style.cssText = 'width:100%;height:520px;';
+      panoDiv.style.cssText = 'width:100%;height:520px;position:relative;';
+
+      const spinner = document.createElement('div');
+      spinner.className = 'hw-spinner-overlay';
+      spinner.innerHTML = '<div class="hw-spinner"></div>';
+      panoDiv.appendChild(spinner);
 
       wrap.appendChild(bar);
       wrap.appendChild(panoDiv);
@@ -655,7 +616,18 @@
           maxHfov: 120,
           title: '한화포레나 부산대연 ' + dong + '동 ' + line + '호라인 지상' + h + 'm'
         });
+        pannellumViewer.on('load', function() {
+          const sp = panoDiv.querySelector('.hw-spinner-overlay');
+          if (sp) sp.style.display = 'none';
+        });
+        pannellumViewer.on('error', function() {
+          const sp = panoDiv.querySelector('.hw-spinner-overlay');
+          if (sp) sp.remove();
+          panoDiv.innerHTML = '<div style="height:520px;display:flex;align-items:center;justify-content:center;background:#f8f5f0;"><p style="color:#9A9A9A;font-size:13px;">파노라마를 불러올 수 없습니다. 사진 파일을 확인해 주세요.</p></div>';
+        });
       } catch(e) {
+        const sp = panoDiv.querySelector('.hw-spinner-overlay');
+        if (sp) sp.remove();
         panoDiv.innerHTML = '<div style="height:520px;display:flex;align-items:center;justify-content:center;background:#f8f5f0;"><p style="color:#9A9A9A;font-size:13px;">파노라마를 불러오는 중 오류가 발생했습니다</p></div>';
       }
 
@@ -704,72 +676,84 @@
       if (e.target.id === 'authModal') closeAuthModal();
     });
 
-    /* ── Facilities ── */
-    const facGrid = document.getElementById('facilityGrid');
-    facilities.forEach((fac, fi) => {
-      const card = document.createElement('div');
-      card.className = 'hw-fac-card';
-      card.setAttribute('role', 'button');
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('aria-label', fac.group + ' 사진 보기');
+    /* ── Facility VR ── */
+    const facBtnsEl      = document.getElementById('facBtns');
+    const facViewerAreaEl = document.getElementById('facViewerArea');
 
-      const imgSrc = PHOTOS_BASE + '/부대시설/' + fac.files[0];
-      card.innerHTML =
-        '<img class="hw-fac-thumb" src="' + encodeURI(imgSrc) + '" alt="' + fac.group + '" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">' +
-        '<div class="hw-fac-thumb-placeholder" style="display:none"><span>' + fac.icon + '</span></div>' +
-        '<div class="hw-fac-name">' + fac.group + (fac.files.length > 1 ? '<span class="hw-fac-count">&nbsp;(' + fac.files.length + '장)</span>' : '') + '</div>';
-
-      card.addEventListener('click', () => openLightbox(fi, 0));
-      card.addEventListener('keypress', e => { if (e.key === 'Enter') openLightbox(fi, 0); });
-      facGrid.appendChild(card);
+    facilityVR.forEach((fac, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'hw-btn';
+      btn.textContent = fac.name;
+      btn.dataset.idx = String(idx);
+      btn.addEventListener('click', () => loadFacilityVR(idx));
+      facBtnsEl.appendChild(btn);
     });
 
-    /* ── Lightbox ── */
-    let lbFacIdx = 0, lbImgIdx = 0;
-    function openLightbox(fi, ii) {
-      lbFacIdx = fi; lbImgIdx = ii;
-      renderLb();
-      document.getElementById('lightbox').classList.add('open');
+    function loadFacilityVR(idx) {
+      const fac = facilityVR[idx];
+      const rawPath = PHOTOS_BASE + '/부대시설/' + fac.file;
+      const imgPath = encodeURI(rawPath);
+
+      facBtnsEl.querySelectorAll('.hw-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.idx === String(idx));
+      });
+
+      if (facPannellumViewer) {
+        try { facPannellumViewer.destroy(); } catch(e) {}
+        facPannellumViewer = null;
+      }
+
+      const bar = document.createElement('div');
+      bar.style.cssText = 'padding:10px 20px; background:#f8f5f0; border-bottom:1px solid #E5DDC8; font-size:14px; color:#1A1A1A; font-weight:500;';
+      bar.textContent = fac.name;
+
+      const facPanoDiv = document.createElement('div');
+      facPanoDiv.id = 'facPannellumEl';
+      facPanoDiv.style.cssText = 'width:100%;height:420px;position:relative;';
+
+      const facSpinner = document.createElement('div');
+      facSpinner.className = 'hw-spinner-overlay';
+      facSpinner.innerHTML = '<div class="hw-spinner"></div>';
+      facPanoDiv.appendChild(facSpinner);
+
+      facViewerAreaEl.innerHTML = '';
+      facViewerAreaEl.appendChild(bar);
+      facViewerAreaEl.appendChild(facPanoDiv);
+
+      try {
+        facPannellumViewer = pannellum.viewer('facPannellumEl', {
+          type: 'equirectangular',
+          panorama: imgPath,
+          autoLoad: true,
+          autoRotate: -2,
+          compass: false,
+          showControls: true,
+          hfov: 100,
+          minHfov: 50,
+          maxHfov: 120,
+          title: fac.name
+        });
+        facPannellumViewer.on('load', function() {
+          const sp = facPanoDiv.querySelector('.hw-spinner-overlay');
+          if (sp) sp.style.display = 'none';
+        });
+        facPannellumViewer.on('error', function() {
+          const sp = facPanoDiv.querySelector('.hw-spinner-overlay');
+          if (sp) sp.remove();
+          facPanoDiv.innerHTML = '<div style="height:420px;display:flex;align-items:center;justify-content:center;background:#f8f5f0;"><p style="color:#9A9A9A;font-size:13px;">파노라마를 불러올 수 없습니다</p></div>';
+        });
+      } catch(e) {
+        const sp = facPanoDiv.querySelector('.hw-spinner-overlay');
+        if (sp) sp.remove();
+        facPanoDiv.innerHTML = '<div style="height:420px;display:flex;align-items:center;justify-content:center;background:#f8f5f0;"><p style="color:#9A9A9A;font-size:13px;">오류가 발생했습니다</p></div>';
+      }
+
+      facViewerAreaEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('open');
-    }
-    function lbNav(dir) {
-      const fac = facilities[lbFacIdx];
-      lbImgIdx = (lbImgIdx + dir + fac.files.length) % fac.files.length;
-      renderLb();
-    }
-    function renderLb() {
-      const fac = facilities[lbFacIdx];
-      const file = fac.files[lbImgIdx];
-      const src  = PHOTOS_BASE + '/부대시설/' + file;
-      document.getElementById('lbImg').src = encodeURI(src);
-      document.getElementById('lbImg').alt = fac.group;
-      const caption = fac.files.length > 1
-        ? fac.group + ' ' + (lbImgIdx + 1) + ' / ' + fac.files.length
-        : fac.group;
-      document.getElementById('lbCaption').textContent = caption;
-      const hasPrev = document.querySelector('.hw-lb-prev');
-      const hasNext = document.querySelector('.hw-lb-next');
-      if (hasPrev) hasPrev.style.display = fac.files.length > 1 ? 'block' : 'none';
-      if (hasNext) hasNext.style.display = fac.files.length > 1 ? 'block' : 'none';
-    }
-    document.getElementById('lightbox').addEventListener('click', e => {
-      if (e.target.id === 'lightbox') closeLightbox();
-    });
-    document.addEventListener('keydown', e => {
-      const lb = document.getElementById('lightbox');
-      if (!lb.classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft')  lbNav(-1);
-      if (e.key === 'ArrowRight') lbNav(1);
-    });
 
     /* ── Expose globals for inline onclick ── */
     window.closeAuthModal = closeAuthModal;
     window.submitAuth     = submitAuth;
-    window.closeLightbox  = closeLightbox;
-    window.lbNav          = lbNav;
 
   })();
   </script>

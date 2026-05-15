@@ -7,12 +7,11 @@
 
   // 단지별 유튜브 영상 (null = 준비중 placeholder)
   const aptVideos = {
-    'venuv':  { id: 'UDV4SFvFjX8', start: 159 },
-    'venubre': { id: 'UDV4SFvFjX8', start: 159 }  // alias
+    'venuve': { id: 'UDV4SFvFjX8', start: 159 }
   };
 
   const params = new URLSearchParams(window.location.search);
-  const apartmentId = params.get('id') || 'venuv';
+  const apartmentId = params.get('id') || 'venuve';
 
   fetch('data/busan.json')
     .then(r => r.json())

@@ -8,7 +8,7 @@ cd /d "%~dp0"
 echo Working directory: %CD%
 echo.
 
-echo [1/5] Compressing oversized photos (Cloudflare 25 MiB limit)...
+echo [1/6] Compressing existing photos (Cloudflare 25 MiB limit)...
 node scripts\compress-photos.js
 if errorlevel 1 (
   echo.
@@ -19,7 +19,17 @@ if errorlevel 1 (
 )
 
 echo.
-echo [2/5] Scanning photos and updating busan.json...
+echo [2/6] Compressing Hanwha Daeyeon photos to optimized/...
+node scripts\compress-hanwha.js
+if errorlevel 1 (
+  echo.
+  echo [ERROR] compress-hanwha.js failed.
+  pause
+  exit /b 1
+)
+
+echo.
+echo [3/6] Scanning photos and updating busan.json...
 node scripts\scan-photos.js
 if errorlevel 1 (
   echo.
@@ -30,11 +40,11 @@ if errorlevel 1 (
 )
 
 echo.
-echo [3/5] Git status...
+echo [4/6] Git status...
 git status --short
 
 echo.
-echo [4/5] Git add + commit + push...
+echo [5/6] Git add + commit + push...
 git add .
 git commit -m "deploy: photos and data update"
 if errorlevel 1 (
@@ -47,7 +57,7 @@ if errorlevel 1 (
 )
 
 echo.
-echo [5/5] Cloudflare Pages deploy...
+echo [6/6] Cloudflare Pages deploy...
 npx wrangler pages deploy public --project-name=sj-360-apt-vr --branch=main --commit-dirty=true
 if errorlevel 1 (
   echo.

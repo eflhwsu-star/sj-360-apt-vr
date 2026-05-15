@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>한화포레나 부산대연 360 VR | SJ부동산</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+  <style>
+    /* ── Page layout ── */
+    .hw-page { display:flex; flex-direction:column; min-height:100vh; }
+
+    /* ── Sticky header ── */
+    .hw-header {
+      position:sticky; top:0; z-index:200;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:16px 32px;
+      background:var(--bg-card); border-bottom:1px solid var(--border);
+    }
+    .hw-header-center { flex:1; margin:0 24px; }
+    .hw-header-title  { font-size:15px; font-weight:500; color:var(--text-primary); }
+    .hw-header-sub    { font-size:11px; color:var(--text-muted); margin-top:1px; }
+    .hw-logo-link     { display:flex; align-items:center; flex-shrink:0; }
+    .hw-back-link     { font-size:13px; color:var(--text-secondary); transition:color .2s; }
+    .hw-back-link:hover { color:var(--accent); }
+
+    /* ── Section wrapper ── */
+    .hw-section { border-bottom:1px solid var(--border); }
+    .hw-inner   { max-width:1080px; margin:0 auto; padding:56px 32px; }
+    .hw-section-title {
+      font-size:18px; font-weight:500; color:var(--text-primary);
+      margin-bottom:32px;
+    }
+
+    /* ── Info grid ── */
+    .hw-info-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+      border:1px solid var(--border); border-radius:var(--radius-lg);
+      overflow:hidden;
+    }
+    .hw-info-cell {
+      padding:20px 24px;
+      border-right:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+    }
+    .hw-info-cell:nth-child(3n) { border-right:none; }
+    .hw-info-cell:nth-last-child(-n+3) { border-bottom:none; }
+    .hw-info-label {
+      font-size:11px; color:var(--text-muted);
+      letter-spacing:.5px; text-transform:uppercase; margin-bottom:6px;
+    }
+    .hw-info-value { font-size:15px; color:var(--text-primary); line-height:1.4; }
+
+    /* ── Selling points ── */
+    .hw-sell-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .hw-sell-card {
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:var(--radius-lg); padding:28px 24px;
+      box-shadow:var(--shadow-sm);
+    }
+    .hw-sell-num  { font-size:11px; color:var(--accent); font-weight:500; letter-spacing:1px; margin-bottom:10px; }
+    .hw-sell-head { font-size:16px; font-weight:500; color:var(--text-primary); margin-bottom:10px; line-height:1.4; }
+    .hw-sell-body { font-size:14px; color:var(--text-secondary); line-height:1.65; }
+
+    /* ── Viewer section (dark) ── */
+    .hw-viewer-wrap {
+      background:#111; color:#fff;
+      border-top:1px solid #222; border-bottom:1px solid #222;
+    }
+    .hw-viewer-inner { max-width:1080px; margin:0 auto; padding:48px 32px; }
+    .hw-viewer-title {
+      font-size:18px; font-weight:500; color:#fff;
+      margin-bottom:8px;
+    }
+    .hw-viewer-desc { font-size:13px; color:#888; margin-bottom:32px; }
+
+    /* Control panel */
+    .hw-ctrl-group  { margin-bottom:20px; }
+    .hw-ctrl-label  { font-size:11px; color:#777; letter-spacing:.5px; margin-bottom:10px; }
+    .hw-ctrl-btns   { display:flex; gap:8px; flex-wrap:wrap; }
+
+    .hw-btn {
+      padding:9px 18px;
+      border:1px solid #333; border-radius:var(--radius-sm);
+      background:transparent; color:#aaa;
+      font-family:inherit; font-size:14px; cursor:pointer;
+      transition:border-color .15s, background .15s, color .15s;
+    }
+    .hw-btn:hover { border-color:#666; color:#fff; }
+    .hw-btn.active {
+      background:var(--accent); border-color:var(--accent);
+      color:#fff; font-weight:500;
+    }
+
+    /* Viewer embed area */
+    .hw-pano-wrap {
+      margin-top:28px;
+      border:1px solid #222; border-radius:var(--radius-md); overflow:hidden;
+      line-height:0;
+    }
+    .hw-pano-placeholder {
+      height:340px; display:flex; align-items:center; justify-content:center;
+      background:#1a1a1a; border:1px solid #222; border-radius:var(--radius-md);
+      margin-top:28px;
+    }
+    .hw-pano-placeholder p { font-size:14px; color:#555; }
+
+    /* ── Facilities ── */
+    .hw-fac-grid {
+      display:grid; grid-template-columns:repeat(5,1fr); gap:12px;
+    }
+    .hw-fac-card {
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:var(--radius-md); overflow:hidden; cursor:pointer;
+      transition:box-shadow .2s, transform .2s;
+    }
+    .hw-fac-card:hover {
+      box-shadow:var(--shadow-md); transform:translateY(-2px);
+    }
+    .hw-fac-thumb {
+      width:100%; aspect-ratio:4/3; object-fit:cover;
+      background:var(--bg-warm);
+      display:block;
+    }
+    .hw-fac-thumb-placeholder {
+      width:100%; aspect-ratio:4/3;
+      background:var(--bg-warm);
+      display:flex; align-items:center; justify-content:center;
+    }
+    .hw-fac-thumb-placeholder span { font-size:24px; }
+    .hw-fac-name {
+      padding:10px 12px;
+      font-size:13px; color:var(--text-primary); font-weight:500;
+    }
+    .hw-fac-count { font-size:11px; color:var(--text-muted); }
+
+    /* Lightbox */
+    .hw-lightbox {
+      position:fixed; inset:0; z-index:2000;
+      background:rgba(0,0,0,.92);
+      display:none; align-items:center; justify-content:center;
+    }
+    .hw-lightbox.open { display:flex; }
+    .hw-lb-img {
+      max-width:90vw; max-height:88vh; object-fit:contain;
+      border-radius:var(--radius-sm);
+    }
+    .hw-lb-close {
+      position:absolute; top:20px; right:24px;
+      background:none; border:none; color:#fff; font-size:28px;
+      cursor:pointer; padding:4px 10px; line-height:1;
+    }
+    .hw-lb-nav {
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,.12); border:none; color:#fff;
+      font-size:24px; cursor:pointer;
+      padding:16px 14px; border-radius:4px;
+      transition:background .2s;
+    }
+    .hw-lb-nav:hover { background:rgba(255,255,255,.25); }
+    .hw-lb-prev { left:20px; }
+    .hw-lb-next { right:20px; }
+    .hw-lb-caption {
+      position:absolute; bottom:20px; left:50%; transform:translateX(-50%);
+      font-size:13px; color:#bbb;
+      background:rgba(0,0,0,.5); padding:6px 14px; border-radius:20px;
+      white-space:nowrap;
+    }
+
+    /* ── CTA ── */
+    .hw-cta-wrap { background:var(--bg-warm); }
+    .hw-cta-inner { max-width:640px; margin:0 auto; padding:56px 32px; text-align:center; }
+    .hw-cta-title { font-size:22px; font-weight:500; color:var(--text-primary); }
+    .hw-cta-desc  { font-size:14px; color:var(--text-secondary); margin:12px 0 28px; line-height:1.65; }
+    .hw-cta-btns  { display:flex; gap:12px; max-width:480px; margin:0 auto; }
+    .hw-cta-kakao {
+      flex:1; display:flex; align-items:center; justify-content:center; gap:8px;
+      padding:14px 20px;
+      background:var(--kakao-yellow); color:var(--kakao-text);
+      border-radius:var(--radius-md); font-size:15px; font-weight:500;
+      text-decoration:none; transition:opacity .2s;
+    }
+    .hw-cta-kakao:hover { opacity:.88; }
+    .hw-cta-call {
+      flex:0 0 auto; display:flex; align-items:center; justify-content:center; gap:6px;
+      padding:14px 20px;
+      background:var(--bg-card); color:var(--text-primary);
+      border:1px solid var(--border); border-radius:var(--radius-md);
+      font-size:15px; font-weight:500; text-decoration:none;
+      transition:border-color .2s, color .2s;
+    }
+    .hw-cta-call:hover { border-color:var(--accent); color:var(--accent); }
+
+    /* ── Auth modal ── */
+    .hw-modal-overlay {
+      position:fixed; inset:0; z-index:1500;
+      background:rgba(26,26,26,.65); backdrop-filter:blur(4px);
+      display:none; align-items:center; justify-content:center; padding:16px;
+    }
+    .hw-modal-overlay.open { display:flex; }
+    .hw-modal-card {
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:var(--radius-lg); padding:40px 32px;
+      max-width:420px; width:100%; position:relative; text-align:center;
+      box-shadow:var(--shadow-md);
+    }
+    .hw-modal-close {
+      position:absolute; top:14px; right:16px;
+      background:none; border:none; font-size:22px;
+      color:var(--text-muted); cursor:pointer; padding:4px 8px;
+    }
+    .hw-modal-close:hover { color:var(--text-secondary); }
+    .hw-modal-icon  { margin-bottom:16px; }
+    .hw-modal-title { font-size:18px; font-weight:500; color:var(--text-primary); margin-bottom:8px; }
+    .hw-modal-desc  { font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:24px; }
+    .hw-modal-kakao {
+      display:block; width:100%; padding:13px;
+      background:var(--kakao-yellow); color:var(--kakao-text);
+      border-radius:var(--radius-md); font-size:15px; font-weight:500;
+      text-decoration:none; margin-bottom:20px; transition:opacity .2s;
+    }
+    .hw-modal-kakao:hover { opacity:.88; }
+    .hw-modal-divider {
+      font-size:12px; color:var(--text-muted); margin:0 0 16px;
+      position:relative; text-align:center;
+    }
+    .hw-modal-divider::before,
+    .hw-modal-divider::after {
+      content:''; position:absolute; top:50%; width:35%; height:1px;
+      background:var(--border);
+    }
+    .hw-modal-divider::before { left:0; }
+    .hw-modal-divider::after  { right:0; }
+    .hw-modal-input {
+      width:100%; padding:12px 16px;
+      border:1px solid var(--border); border-radius:var(--radius-md);
+      font-size:14px; font-family:inherit;
+      background:var(--bg-primary); color:var(--text-primary);
+      outline:none; -webkit-appearance:none;
+      transition:border-color .2s; margin-bottom:8px;
+    }
+    .hw-modal-input:focus { border-color:var(--accent); }
+    .hw-modal-submit {
+      width:100%; padding:12px;
+      background:var(--accent); color:#fff;
+      border:none; border-radius:var(--radius-md);
+      font-size:14px; font-weight:500; font-family:inherit; cursor:pointer;
+      transition:background .2s;
+    }
+    .hw-modal-submit:hover { background:var(--accent-hover); }
+    .hw-modal-error { font-size:12px; color:#C44444; margin-top:8px; }
+
+    /* ── Mobile ── */
+    @media (max-width:768px) {
+      .hw-header    { padding:12px 16px; }
+      .hw-header-title { font-size:13px; }
+      .hw-header-sub   { display:none; }
+      .hw-inner     { padding:40px 16px; }
+      .hw-viewer-inner { padding:32px 16px; }
+
+      .hw-info-grid { grid-template-columns:repeat(2,1fr); }
+      .hw-info-cell:nth-child(3n)      { border-right:1px solid var(--border); }
+      .hw-info-cell:nth-child(2n)      { border-right:none; }
+      .hw-info-cell:nth-last-child(-n+3) { border-bottom:1px solid var(--border); }
+      .hw-info-cell:nth-last-child(-n+2) { border-bottom:none; }
+
+      .hw-sell-grid { grid-template-columns:1fr; gap:12px; }
+
+      .hw-ctrl-btns { flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; }
+      .hw-btn       { flex-shrink:0; }
+
+      .hw-fac-grid  { grid-template-columns:repeat(2,1fr); gap:10px; }
+
+      .hw-cta-btns  { flex-direction:column; }
+      .hw-modal-card { padding:32px 20px; }
+    }
+    @media (max-width:480px) {
+      .hw-lb-nav { display:none; }
+    }
+  </style>
+</head>
+<body class="hw-page">
+
+  <!-- A. Header -->
+  <header class="hw-header">
+    <a href="index.html" class="hw-logo-link" aria-label="SJ부동산 홈으로">
+      <img src="img/logo.svg" alt="SJ부동산" height="32">
+    </a>
+    <div class="hw-header-center">
+      <p class="hw-header-title">한화포레나 부산대연</p>
+      <p class="hw-header-sub">부산광역시 남구 대연동 455-25 · 대연3구역 재건축</p>
+    </div>
+    <a href="https://open.kakao.com/o/g7PstLai" target="_blank" rel="noopener noreferrer" class="header-kakao-btn">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M7 1.5C3.962 1.5 1.5 3.47 1.5 5.9c0 1.516.9 2.85 2.27 3.67l-.62 2.3 2.84-1.62c.32.05.65.08.99.08 3.038 0 5.5-1.97 5.5-4.4S10.038 1.5 7 1.5z" fill="var(--kakao-text)"/>
+      </svg>
+      카톡 상담
+    </a>
+  </header>
+
+  <!-- B. Complex info -->
+  <section class="hw-section">
+    <div class="hw-inner">
+      <h1 style="font-size:28px;font-weight:500;color:var(--text-primary);letter-spacing:-.5px;margin-bottom:6px;">한화포레나 부산대연</h1>
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;">부산광역시 남구 대연동 455-25 · 대연3구역 재건축</p>
+      <div class="hw-info-grid">
+        <div class="hw-info-cell">
+          <p class="hw-info-label">시공</p>
+          <p class="hw-info-value">한화 건설부문 FORENA</p>
+        </div>
+        <div class="hw-info-cell">
+          <p class="hw-info-label">규모</p>
+          <p class="hw-info-value">6개동 367세대</p>
+        </div>
+        <div class="hw-info-cell">
+          <p class="hw-info-label">평형</p>
+          <p class="hw-info-value">전용 59 · 72 · 84㎡</p>
+        </div>
+        <div class="hw-info-cell">
+          <p class="hw-info-label">입주</p>
+          <p class="hw-info-value">2026년 5월</p>
+        </div>
+        <div class="hw-info-cell">
+          <p class="hw-info-label">분양</p>
+          <p class="hw-info-value">후분양 100% 완판</p>
+        </div>
+        <div class="hw-info-cell">
+          <p class="hw-info-label">옵션</p>
+          <p class="hw-info-value">확장 · 시스템에어컨 무상</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C. Selling points -->
+  <section class="hw-section" style="background:var(--bg-primary);">
+    <div class="hw-inner">
+      <h2 class="hw-section-title">왜 한화포레나 부산대연인가</h2>
+      <div class="hw-sell-grid">
+        <div class="hw-sell-card">
+          <p class="hw-sell-num">01</p>
+          <h3 class="hw-sell-head">대연라인 핵심 입지</h3>
+          <p class="hw-sell-body">2호선 경성대·부경대역 도보권, 코스트코·신세계 센텀시티 차 10분. 부산 남구에서 교통·상권·학군이 가장 고르게 갖춰진 생활권.</p>
+        </div>
+        <div class="hw-sell-card">
+          <p class="hw-sell-num">02</p>
+          <h3 class="hw-sell-head">후분양의 힘</h3>
+          <p class="hw-sell-body">실물 확인 후 계약, 빠른 입주, 발코니·시스템에어컨 무상 제공. 선분양 대비 옵션비 부담이 크게 낮아져 실질 분양가가 경쟁력 있습니다.</p>
+        </div>
+        <div class="hw-sell-card">
+          <p class="hw-sell-num">03</p>
+          <h3 class="hw-sell-head">검증된 완판 · 미래가치</h3>
+          <p class="hw-sell-body">부산 청약 양극화 속 100% 완판. 동명대 동물병원(2027 예정)·해양수산부 이전 등 배후 개발로 중장기 가치 상승 기대.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- D. 360 Viewer (dark) -->
+  <section class="hw-viewer-wrap">
+    <div class="hw-viewer-inner">
+      <h2 class="hw-viewer-title">360° 드론 조망</h2>
+      <p class="hw-viewer-desc">동 · 호라인 · 고도를 선택하면 해당 시점의 파노라마를 불러옵니다</p>
+
+      <!-- Dong tabs -->
+      <div class="hw-ctrl-group">
+        <p class="hw-ctrl-label">동 선택</p>
+        <div class="hw-ctrl-btns" id="dongBtns"></div>
+      </div>
+
+      <!-- Line buttons (hidden until dong selected) -->
+      <div class="hw-ctrl-group" id="lineGroup" style="display:none;">
+        <p class="hw-ctrl-label">호라인 선택</p>
+        <div class="hw-ctrl-btns" id="lineBtns"></div>
+      </div>
+
+      <!-- Height buttons (hidden until line selected) -->
+      <div class="hw-ctrl-group" id="heightGroup" style="display:none;">
+        <p class="hw-ctrl-label">고도 선택</p>
+        <div class="hw-ctrl-btns" id="heightBtns"></div>
+      </div>
+
+      <!-- Viewer -->
+      <div id="viewerArea">
+        <div class="hw-pano-placeholder">
+          <p>동 · 호라인 · 고도를 순서대로 선택하세요</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- E. Facilities -->
+  <section class="hw-section" style="background:var(--bg-card);">
+    <div class="hw-inner">
+      <h2 class="hw-section-title">부대시설 둘러보기</h2>
+      <div class="hw-fac-grid" id="facilityGrid"></div>
+    </div>
+  </section>
+
+  <!-- F. CTA -->
+  <section class="hw-cta-wrap">
+    <div class="hw-cta-inner">
+      <h2 class="hw-cta-title">분양 상담이 필요하신가요?</h2>
+      <p class="hw-cta-desc">SJ부동산에서 한화포레나 부산대연 잔여 세대 및 프리미엄 정보를 안내해 드립니다.<br>카톡 또는 전화로 편하게 연락 주세요.</p>
+      <div class="hw-cta-btns">
+        <a href="https://open.kakao.com/o/g7PstLai" target="_blank" rel="noopener noreferrer" class="hw-cta-kakao">
+          <svg width="16" height="16" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M7 1.5C3.962 1.5 1.5 3.47 1.5 5.9c0 1.516.9 2.85 2.27 3.67l-.62 2.3 2.84-1.62c.32.05.65.08.99.08 3.038 0 5.5-1.97 5.5-4.4S10.038 1.5 7 1.5z" fill="var(--kakao-text)"/>
+          </svg>
+          카톡 1:1 문의
+        </a>
+        <a href="tel:01028795452" class="hw-cta-call">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.5 2A1.5 1.5 0 0 0 2 3.5v1C2 10.299 5.701 14 10.5 14h1a1.5 1.5 0 0 0 1.5-1.5v-1.09a1.5 1.5 0 0 0-1.084-1.443l-1.386-.386a1.5 1.5 0 0 0-1.664.677l-.31.517A5.015 5.015 0 0 1 5.785 7.94l.517-.31a1.5 1.5 0 0 0 .677-1.664l-.386-1.386A1.5 1.5 0 0 0 4.59 3.5H3.5z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          </svg>
+          010-2879-5452
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>SJ부동산 | 공인중개사 등록번호: 제26290-2024-00093</p>
+    <p>010-2879-5452 | 051-637-5452 | jsj_lhi@naver.com</p>
+    <a href="https://litt.ly/sj5452" target="_blank" rel="noopener noreferrer">https://litt.ly/sj5452</a>
+  </footer>
+
+  <!-- Auth modal -->
+  <div id="authModal" class="hw-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="hw-modal-card">
+      <button class="hw-modal-close" onclick="closeAuthModal()" aria-label="닫기">×</button>
+      <div class="hw-modal-icon">
+        <svg width="44" height="44" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="color:var(--text-muted)">
+          <rect x="10" y="22" width="28" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M16 22v-6a8 8 0 0 1 16 0v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="24" cy="31" r="2" fill="currentColor"/>
+          <line x1="24" y1="33" x2="24" y2="37" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3 class="hw-modal-title" id="authTitle">더 많은 VR 조망을 보시려면</h3>
+      <p class="hw-modal-desc">SJ부동산 카톡방에서 회원 비밀번호를 받아주세요. 한 번 인증하면 24시간 동안 모든 조망을 자유롭게 보실 수 있습니다.</p>
+      <a href="https://open.kakao.com/o/g7PstLai" target="_blank" rel="noopener noreferrer" class="hw-modal-kakao">
+        카톡방에서 비밀번호 받기
+      </a>
+      <div class="hw-modal-divider">또는</div>
+      <input type="password" id="authPw" placeholder="회원 비밀번호 입력" class="hw-modal-input" autocomplete="current-password">
+      <button onclick="submitAuth()" class="hw-modal-submit">입장하기</button>
+      <p class="hw-modal-error" id="authError" style="display:none">비밀번호가 일치하지 않습니다</p>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="hw-lightbox" role="dialog" aria-modal="true" aria-label="사진 보기">
+    <button class="hw-lb-close" onclick="closeLightbox()" aria-label="닫기">×</button>
+    <button class="hw-lb-nav hw-lb-prev" onclick="lbNav(-1)" aria-label="이전">&#8249;</button>
+    <img id="lbImg" class="hw-lb-img" src="" alt="">
+    <button class="hw-lb-nav hw-lb-next" onclick="lbNav(1)" aria-label="다음">&#8250;</button>
+    <p id="lbCaption" class="hw-lb-caption"></p>
+  </div>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ── Constants ── */
+    const PASSWORD    = 'sj360vr';
+    const AUTH_KEY    = 'sj360_auth_hanwha';
+    const VIEW_KEY    = 'sj360_views_hanwha';
+    const FREE_LIMIT  = 2;
+    const PHOTOS_BASE = 'photos/한화포레나 부산대연/optimized';
+
+    /* ── Data ── */
+    const aptData = {
+      '101': { lines: ['1','2'],       heights: ['15','30','45'] },
+      '102': { lines: ['1','2,3','4,5'], heights: ['15','30','45','60'] },
+      '103': { lines: ['1','2'],       heights: ['15','30','45','60'] },
+      '104': { lines: ['1','2,3','4,5'], heights: ['15','30','45','60'] },
+      '105': { lines: ['1','2'],       heights: ['15','30','45','60'] },
+      '106': { lines: ['1','2'],       heights: ['15','30','45','60'] }
+    };
+
+    const facilities = [
+      { group: '문주',        files: ['문주.JPG'],                     icon: '🏛️' },
+      { group: '근린생활시설', files: ['근린생활시설 1.JPG', '근린생활시설 2.JPG'], icon: '🏢' },
+      { group: '잔디마당',    files: ['잔디마당.JPG'],               icon: '🌿' },
+      { group: '어린이 놀이터', files: ['어린이 놀이터 1.JPG', '어린이 놀이터 2.JPG'], icon: '🏡' },
+      { group: '커뮤니티 시설', files: ['커뮤니티 시설.JPG'], icon: '🏋️' }
+    ];
+
+    /* ── State ── */
+    let state = { dong: null, line: null, height: null };
+    let pannellumViewer = null;
+    let pendingView = null;   // { dong, line, height } awaiting auth
+
+    /* ── Auth helpers ── */
+    function isAuthed() {
+      try {
+        const v = localStorage.getItem(AUTH_KEY);
+        if (!v) return false;
+        const { ts } = JSON.parse(v);
+        return Date.now() - ts < 86400000;
+      } catch (e) { return false; }
+    }
+    function setAuthed() {
+      localStorage.setItem(AUTH_KEY, JSON.stringify({ ts: Date.now() }));
+    }
+    function getViewCount() {
+      return parseInt(sessionStorage.getItem(VIEW_KEY) || '0', 10);
+    }
+    function incViewCount() {
+      sessionStorage.setItem(VIEW_KEY, String(getViewCount() + 1));
+    }
+
+    /* ── Render dong tabs ── */
+    const dongBtns   = document.getElementById('dongBtns');
+    const lineGroup  = document.getElementById('lineGroup');
+    const lineBtns   = document.getElementById('lineBtns');
+    const heightGroup= document.getElementById('heightGroup');
+    const heightBtns = document.getElementById('heightBtns');
+
+    Object.keys(aptData).forEach(dong => {
+      const btn = document.createElement('button');
+      btn.className = 'hw-btn';
+      btn.textContent = dong + '동';
+      btn.dataset.dong = dong;
+      btn.addEventListener('click', () => selectDong(dong));
+      dongBtns.appendChild(btn);
+    });
+
+    function selectDong(dong) {
+      state.dong = dong; state.line = null; state.height = null;
+      updateDongBtns();
+      renderLineBtns(dong);
+      lineGroup.style.display  = 'block';
+      heightGroup.style.display= 'none';
+      resetViewer();
+    }
+
+    function updateDongBtns() {
+      dongBtns.querySelectorAll('.hw-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.dong === state.dong);
+      });
+    }
+
+    function renderLineBtns(dong) {
+      lineBtns.innerHTML = '';
+      aptData[dong].lines.forEach(line => {
+        const btn = document.createElement('button');
+        btn.className = 'hw-btn';
+        btn.textContent = line + '호라인';
+        btn.dataset.line = line;
+        btn.addEventListener('click', () => selectLine(dong, line));
+        lineBtns.appendChild(btn);
+      });
+    }
+
+    function selectLine(dong, line) {
+      state.line = line; state.height = null;
+      lineBtns.querySelectorAll('.hw-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.line === line);
+      });
+      renderHeightBtns(dong);
+      heightGroup.style.display = 'block';
+      resetViewer();
+    }
+
+    function renderHeightBtns(dong) {
+      heightBtns.innerHTML = '';
+      aptData[dong].heights.forEach(h => {
+        const btn = document.createElement('button');
+        btn.className = 'hw-btn';
+        btn.textContent = '지상 ' + h + 'm';
+        btn.dataset.h = h;
+        btn.addEventListener('click', () => selectHeight(dong, state.line, h, btn));
+        heightBtns.appendChild(btn);
+      });
+    }
+
+    function selectHeight(dong, line, h, btn) {
+      if (!isAuthed() && getViewCount() >= FREE_LIMIT) {
+        pendingView = { dong, line, h, btn };
+        openAuthModal();
+        return;
+      }
+      doLoadVR(dong, line, h, btn);
+    }
+
+    function doLoadVR(dong, line, h, btn) {
+      state.height = h;
+      heightBtns.querySelectorAll('.hw-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.h === h);
+      });
+      incViewCount();
+      loadVR(dong, line, h);
+    }
+
+    /* ── Pannellum loader ── */
+    function loadVR(dong, line, h) {
+      const rawPath = PHOTOS_BASE + '/' + dong + '/' + dong + ' ' + line + ' ' + h + '.JPG';
+      const imgPath = encodeURI(rawPath);
+
+      if (pannellumViewer) {
+        try { pannellumViewer.destroy(); } catch(e) {}
+        pannellumViewer = null;
+      }
+
+      const area = document.getElementById('viewerArea');
+      area.innerHTML = '<div id="pannellumEl" style="width:100%;height:520px;border-radius:0 0 var(--radius-md) var(--radius-md);"></div>';
+      area.style.marginTop = '0';
+
+      // Wrap with info bar
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'margin-top:28px; border:1px solid #333; border-radius:var(--radius-md); overflow:hidden;';
+      const bar = document.createElement('div');
+      bar.style.cssText = 'padding:12px 20px; background:#1a1a1a; border-bottom:1px solid #333; display:flex; align-items:center; gap:10px; font-size:14px; flex-wrap:wrap;';
+      bar.innerHTML =
+        '<span style="font-weight:500;color:#fff;">한화포레나 부산대연</span>' +
+        '<span style="color:#555;font-size:11px;">·</span>' +
+        '<span style="color:#aaa;">' + dong + '동</span>' +
+        '<span style="color:#555;font-size:11px;">·</span>' +
+        '<span style="color:#aaa;">' + line + '호라인</span>' +
+        '<span style="color:#555;font-size:11px;">·</span>' +
+        '<span style="color:var(--accent);font-weight:500;">지상 ' + h + 'm</span>';
+
+      const panoDiv = document.createElement('div');
+      panoDiv.id = 'pannellumEl';
+      panoDiv.style.cssText = 'width:100%;height:520px;';
+
+      wrap.appendChild(bar);
+      wrap.appendChild(panoDiv);
+      area.innerHTML = '';
+      area.appendChild(wrap);
+
+      try {
+        pannellumViewer = pannellum.viewer('pannellumEl', {
+          type: 'equirectangular',
+          panorama: imgPath,
+          autoLoad: true,
+          autoRotate: -2,
+          compass: false,
+          showControls: true,
+          hfov: 100,
+          minHfov: 50,
+          maxHfov: 120,
+          title: '한화포레나 부산대연 ' + dong + '동 ' + line + '호라인 지상' + h + 'm'
+        });
+      } catch(e) {
+        panoDiv.innerHTML = '<div style="height:520px;display:flex;align-items:center;justify-content:center;background:#1a1a1a;"><p style="color:#555;font-size:13px;">파노라마를 불러오는 중 오류가 발생했습니다</p></div>';
+      }
+
+      wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function resetViewer() {
+      if (pannellumViewer) {
+        try { pannellumViewer.destroy(); } catch(e) {}
+        pannellumViewer = null;
+      }
+      document.getElementById('viewerArea').innerHTML =
+        '<div class="hw-pano-placeholder"><p>고도를 선택하면 조망이 표시됩니다</p></div>';
+    }
+
+    /* ── Auth modal ── */
+    function openAuthModal() {
+      document.getElementById('authModal').classList.add('open');
+      document.getElementById('authPw').focus();
+    }
+    function closeAuthModal() {
+      document.getElementById('authModal').classList.remove('open');
+      document.getElementById('authPw').value = '';
+      document.getElementById('authError').style.display = 'none';
+    }
+    function submitAuth() {
+      const pw = document.getElementById('authPw').value;
+      if (pw === PASSWORD) {
+        setAuthed();
+        closeAuthModal();
+        if (pendingView) {
+          const { dong, line, h, btn } = pendingView;
+          pendingView = null;
+          doLoadVR(dong, line, h, btn);
+        }
+      } else {
+        const err = document.getElementById('authError');
+        err.style.display = 'block';
+        setTimeout(() => { err.style.display = 'none'; }, 3000);
+      }
+    }
+    document.getElementById('authPw').addEventListener('keypress', e => {
+      if (e.key === 'Enter') submitAuth();
+    });
+    document.getElementById('authModal').addEventListener('click', e => {
+      if (e.target.id === 'authModal') closeAuthModal();
+    });
+
+    /* ── Facilities ── */
+    const facGrid = document.getElementById('facilityGrid');
+    facilities.forEach((fac, fi) => {
+      const card = document.createElement('div');
+      card.className = 'hw-fac-card';
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', fac.group + ' 사진 보기');
+
+      const imgSrc = PHOTOS_BASE + '/부대시설/' + fac.files[0];
+      card.innerHTML =
+        '<img class="hw-fac-thumb" src="' + encodeURI(imgSrc) + '" alt="' + fac.group + '" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">' +
+        '<div class="hw-fac-thumb-placeholder" style="display:none"><span>' + fac.icon + '</span></div>' +
+        '<div class="hw-fac-name">' + fac.group + (fac.files.length > 1 ? '<span class="hw-fac-count">&nbsp;(' + fac.files.length + '장)</span>' : '') + '</div>';
+
+      card.addEventListener('click', () => openLightbox(fi, 0));
+      card.addEventListener('keypress', e => { if (e.key === 'Enter') openLightbox(fi, 0); });
+      facGrid.appendChild(card);
+    });
+
+    /* ── Lightbox ── */
+    let lbFacIdx = 0, lbImgIdx = 0;
+    function openLightbox(fi, ii) {
+      lbFacIdx = fi; lbImgIdx = ii;
+      renderLb();
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+    function lbNav(dir) {
+      const fac = facilities[lbFacIdx];
+      lbImgIdx = (lbImgIdx + dir + fac.files.length) % fac.files.length;
+      renderLb();
+    }
+    function renderLb() {
+      const fac = facilities[lbFacIdx];
+      const file = fac.files[lbImgIdx];
+      const src  = PHOTOS_BASE + '/부대시설/' + file;
+      document.getElementById('lbImg').src = encodeURI(src);
+      document.getElementById('lbImg').alt = fac.group;
+      const caption = fac.files.length > 1
+        ? fac.group + ' ' + (lbImgIdx + 1) + ' / ' + fac.files.length
+        : fac.group;
+      document.getElementById('lbCaption').textContent = caption;
+      const hasPrev = document.querySelector('.hw-lb-prev');
+      const hasNext = document.querySelector('.hw-lb-next');
+      if (hasPrev) hasPrev.style.display = fac.files.length > 1 ? 'block' : 'none';
+      if (hasNext) hasNext.style.display = fac.files.length > 1 ? 'block' : 'none';
+    }
+    document.getElementById('lightbox').addEventListener('click', e => {
+      if (e.target.id === 'lightbox') closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      const lb = document.getElementById('lightbox');
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft')  lbNav(-1);
+      if (e.key === 'ArrowRight') lbNav(1);
+    });
+
+    /* ── Expose globals for inline onclick ── */
+    window.closeAuthModal = closeAuthModal;
+    window.submitAuth     = submitAuth;
+    window.closeLightbox  = closeLightbox;
+    window.lbNav          = lbNav;
+
+  })();
+  </script>
+</body>
+</html>

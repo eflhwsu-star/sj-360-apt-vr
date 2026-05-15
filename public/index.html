@@ -21,14 +21,97 @@
     </a>
   </header>
 
-  <section class="hero-section">
-    <div class="hero-inner">
-      <h1 class="hero-title">부산광역시 분양 현장 360 VR</h1>
-      <p class="hero-slogan">"한 번도 안 온 고객은 있어도 한 번만 온 고객은 없다"</p>
-      <p class="hero-desc">드론으로 직접 촬영한 실제 분양 현장 조망을 확인하세요</p>
+  <!-- ① 드론 항공뷰 히어로 (crossfade) -->
+  <!-- 이미지: public/img/hero/1~5.webp 배치 필요 (Pexels 항공 드론 사진) -->
+  <section class="hero-crossfade-section" aria-label="히어로 배너">
+    <div class="hero-cf-bg">
+      <img class="hero-cf-img" src="img/hero/1.webp" alt="" loading="eager" decoding="async">
+      <img class="hero-cf-img" src="img/hero/2.webp" alt="" loading="lazy"  decoding="async">
+      <img class="hero-cf-img" src="img/hero/3.webp" alt="" loading="lazy"  decoding="async">
+      <img class="hero-cf-img" src="img/hero/4.webp" alt="" loading="lazy"  decoding="async">
+      <img class="hero-cf-img" src="img/hero/5.webp" alt="" loading="lazy"  decoding="async">
+      <div class="hero-cf-overlay"></div>
+    </div>
+    <div class="hero-cf-content">
+      <h1 class="hero-cf-title">부산 투자,<br>이제는 직접 봐야 합니다.</h1>
+      <p class="hero-cf-sub">서울·수도권에서도 부산 분양 현장 조망을 360°로</p>
+      <a href="hanwha-daeyeon.html" class="hero-cf-cta">
+        지금 가장 핫한 VR 보기
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </div>
   </section>
 
+  <!-- ② 트러스트 바 -->
+  <section class="trust-bar" aria-label="서비스 지표">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <span class="trust-num">90+</span>
+        <span class="trust-lbl">누적 거래</span>
+      </div>
+      <div class="trust-divider" aria-hidden="true"></div>
+      <div class="trust-item">
+        <span class="trust-num">3</span>
+        <span class="trust-lbl">360 VR 단지</span>
+      </div>
+      <div class="trust-divider" aria-hidden="true"></div>
+      <div class="trust-item">
+        <span class="trust-num">4</span>
+        <span class="trust-lbl">부산 자치구</span>
+      </div>
+      <div class="trust-divider" aria-hidden="true"></div>
+      <div class="trust-item">
+        <span class="trust-num">5분</span>
+        <span class="trust-lbl">평균 응답</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ 이번주 픽 (핫한 VR) -->
+  <section class="hot-pick-section">
+    <div class="section-inner-wide">
+      <h2 class="section-title">지금 가장 핫한 VR</h2>
+      <a href="hanwha-daeyeon.html" class="hot-pick-card" aria-label="한화포레나 부산대연 VR 보기">
+        <div class="hot-pick-img-wrap">
+          <!-- 배경: img/hero/1.webp 없으면 그라디언트 fallback -->
+          <img src="img/hero/1.webp" alt="한화포레나 부산대연 드론 조망" class="hot-pick-img" loading="lazy" onerror="this.style.display='none'">
+          <div class="hot-pick-gradient"></div>
+          <span class="hot-pick-badge">이번주 픽</span>
+        </div>
+        <div class="hot-pick-body">
+          <p class="hot-pick-loc">부산 남구 대연동</p>
+          <h3 class="hot-pick-name">한화포레나 부산대연</h3>
+          <p class="hot-pick-desc">6개동 367세대 · 전용 59·72·84㎡ · 2026.5 입주<br>대연라인 핵심, 후분양 100% 완판</p>
+          <span class="hot-pick-cta">360° 드론 조망 보기 →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ④ 신규 VR (가로 스크롤) -->
+  <section class="new-vr-section">
+    <div class="section-inner-wide">
+      <h2 class="section-title">신규 VR</h2>
+      <div class="new-vr-scroll">
+        <a href="hanwha-daeyeon.html" class="new-vr-card">
+          <div class="new-vr-img-wrap">
+            <div class="new-vr-gradient"></div>
+            <span class="new-vr-badge">NEW</span>
+          </div>
+          <div class="new-vr-body">
+            <p class="new-vr-loc">부산 남구</p>
+            <h3 class="new-vr-name">한화포레나 부산대연</h3>
+            <p class="new-vr-meta">6동 · 367세대 · 2026.5</p>
+          </div>
+        </a>
+        <!-- 추가 단지가 생기면 a.new-vr-card 복사하여 추가 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 생활권별 보기 -->
   <section class="districts-section">
     <div class="section-inner-wide">
       <h2 class="section-title">생활권별 보기</h2>

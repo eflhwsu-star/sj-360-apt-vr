@@ -6,6 +6,7 @@
   <title>부산 분양 360 VR | SJ부동산</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 </head>
 <body class="main-page">
 
@@ -74,11 +75,13 @@
     <div class="section-inner-wide">
       <h2 class="section-title">지금 가장 핫한 VR</h2>
       <a href="hanwha-daeyeon.html" class="hot-pick-card" aria-label="한화포레나 부산대연 VR 보기">
-        <div class="hot-pick-img-wrap">
-          <!-- 배경: img/hero/1.webp 없으면 그라디언트 fallback -->
-          <img src="img/hero/1.webp" alt="한화포레나 부산대연 드론 조망" class="hot-pick-img" loading="lazy" onerror="this.style.display='none'">
-          <div class="hot-pick-gradient"></div>
+        <div class="hot-pick-video">
           <span class="hot-pick-badge">이번주 픽</span>
+          <!-- youtube: null → 영상 준비중 placeholder -->
+          <div class="aspect-video video-placeholder">
+            <i class="ti ti-video-off" style="font-size:28px;color:#aaa;"></i>
+            <p style="font-size:13px;color:#888;">영상 준비중</p>
+          </div>
         </div>
         <div class="hot-pick-body">
           <p class="hot-pick-loc">부산 남구 대연동</p>

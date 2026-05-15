@@ -5,6 +5,12 @@
   const PASSWORD = 'sj360vr';
   const FREE_VIEW_LIMIT = 2;
 
+  // 단지별 유튜브 영상 (null = 준비중 placeholder)
+  const aptVideos = {
+    'venuv':  { id: 'UDV4SFvFjX8', start: 159 },
+    'venubre': { id: 'UDV4SFvFjX8', start: 159 }  // alias
+  };
+
   const params = new URLSearchParams(window.location.search);
   const apartmentId = params.get('id') || 'venuv';
 
@@ -43,11 +49,26 @@
   function renderComplexHeader(apt) {
     const displayUrl = apt.official_url.replace(/^https?:\/\//, '').replace(/\/$/, '');
     const locShort = apt.location.replace('부산광역시 ', '').replace('번지 일원', '').replace('번지', '');
+
+    const vid = aptVideos[apartmentId] || null;
+    const videoSlotHtml = vid
+      ? `<div class="aspect-video" style="margin-top:24px;max-width:720px;">
+           <iframe
+             src="https://www.youtube.com/embed/${vid.id}?start=${vid.start}&rel=0&modestbranding=1"
+             allowfullscreen loading="lazy" title="${apt.name} 현장 영상">
+           </iframe>
+         </div>`
+      : `<div class="aspect-video video-placeholder" style="margin-top:24px;max-width:720px;">
+           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18M10.29 10.29A3 3 0 0 0 12 15a3 3 0 0 0 2.71-1.71M12 9a3 3 0 0 1 3 3"/><path d="M9 6.527A10.95 10.95 0 0 1 12 6c4 0 7.333 2.333 10 7-1.09 1.905-2.324 3.419-3.662 4.527M4.547 9.532C3.272 10.619 2.1 12.049 1 14c2.667 4.667 6 7 10 7a10.88 10.88 0 0 0 3.528-.578"/></svg>
+           <p style="color:#666;font-size:13px;margin:0;">영상 준비중</p>
+         </div>`;
+
     document.getElementById('complex-header').innerHTML = `
       <div class="section-inner">
         <h1 class="complex-name">${apt.name}</h1>
         <p class="complex-name-en">${apt.name_en}</p>
-        <div class="complex-meta">
+        ${videoSlotHtml}
+        <div class="complex-meta" style="margin-top:24px;">
           <span>위치 · ${locShort}</span>
           <span>규모 · ${apt.scale} / ${apt.households_total}세대</span>
           <span>시행 · ${apt.developer}</span>

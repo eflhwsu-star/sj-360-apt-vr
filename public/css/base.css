@@ -120,3 +120,31 @@ img {
 .site-footer a:hover {
   color: var(--accent);
 }
+
+/* ── Shared video slot ── */
+.aspect-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #f5f5f5;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.aspect-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #f0eee8;
+  border: 0.5px dashed #c9bfae;
+}

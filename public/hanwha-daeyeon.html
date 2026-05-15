@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>한화포레나 부산대연 360 VR | SJ부동산</title>
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
   <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
   <style>
@@ -63,48 +64,47 @@
     .hw-sell-head { font-size:16px; font-weight:500; color:var(--text-primary); margin-bottom:10px; line-height:1.4; }
     .hw-sell-body { font-size:14px; color:var(--text-secondary); line-height:1.65; }
 
-    /* ── Viewer section (dark) ── */
+    /* ── Viewer section (white) ── */
     .hw-viewer-wrap {
-      background:#111; color:#fff;
-      border-top:1px solid #222; border-bottom:1px solid #222;
+      background:#fff;
+      border-top:1px solid var(--border); border-bottom:1px solid var(--border);
     }
     .hw-viewer-inner { max-width:1080px; margin:0 auto; padding:48px 32px; }
+    .hw-viewer-eyebrow {
+      font-size:11px; font-weight:500; color:#B8861F;
+      letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;
+    }
     .hw-viewer-title {
-      font-size:18px; font-weight:500; color:#fff;
+      font-size:18px; font-weight:500; color:var(--text-primary);
       margin-bottom:8px;
     }
-    .hw-viewer-desc { font-size:13px; color:#888; margin-bottom:32px; }
+    .hw-viewer-desc { font-size:13px; color:var(--text-secondary); margin-bottom:32px; }
 
     /* Control panel */
     .hw-ctrl-group  { margin-bottom:20px; }
-    .hw-ctrl-label  { font-size:11px; color:#777; letter-spacing:.5px; margin-bottom:10px; }
+    .hw-ctrl-label  { font-size:11px; color:var(--text-muted); letter-spacing:.5px; margin-bottom:10px; }
     .hw-ctrl-btns   { display:flex; gap:8px; flex-wrap:wrap; }
 
     .hw-btn {
       padding:9px 18px;
-      border:1px solid #333; border-radius:var(--radius-sm);
-      background:transparent; color:#aaa;
+      border:0.5px solid #E5DDC8; border-radius:var(--radius-sm);
+      background:#fff; color:var(--text-primary);
       font-family:inherit; font-size:14px; cursor:pointer;
       transition:border-color .15s, background .15s, color .15s;
     }
-    .hw-btn:hover { border-color:#666; color:#fff; }
+    .hw-btn:hover { border-color:#B8861F; color:#B8861F; }
     .hw-btn.active {
-      background:var(--accent); border-color:var(--accent);
+      background:#B8861F; border-color:#B8861F;
       color:#fff; font-weight:500;
     }
 
     /* Viewer embed area */
-    .hw-pano-wrap {
-      margin-top:28px;
-      border:1px solid #222; border-radius:var(--radius-md); overflow:hidden;
-      line-height:0;
-    }
     .hw-pano-placeholder {
       height:340px; display:flex; align-items:center; justify-content:center;
-      background:#1a1a1a; border:1px solid #222; border-radius:var(--radius-md);
+      background:#f8f5f0; border:1px solid var(--border); border-radius:var(--radius-md);
       margin-top:28px;
     }
-    .hw-pano-placeholder p { font-size:14px; color:#555; }
+    .hw-pano-placeholder p { font-size:14px; color:var(--text-muted); }
 
     /* ── Facilities ── */
     .hw-fac-grid {
@@ -303,7 +303,16 @@
   <section class="hw-section">
     <div class="hw-inner">
       <h1 style="font-size:28px;font-weight:500;color:var(--text-primary);letter-spacing:-.5px;margin-bottom:6px;">한화포레나 부산대연</h1>
-      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;">부산광역시 남구 대연동 455-25 · 대연3구역 재건축</p>
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:24px;">부산광역시 남구 대연동 455-25 · 대연3구역 재건축</p>
+
+      <!-- 영상 슬롯: youtube null → 준비중 placeholder -->
+      <div style="margin-bottom:32px;">
+        <div class="aspect-video video-placeholder">
+          <i class="ti ti-video-off" style="font-size:32px;color:#999;"></i>
+          <p style="color:#666;font-size:13px;">영상 준비중 — 전수진 소장 촬영 예정</p>
+        </div>
+      </div>
+
       <div class="hw-info-grid">
         <div class="hw-info-cell">
           <p class="hw-info-label">시공</p>
@@ -357,10 +366,11 @@
     </div>
   </section>
 
-  <!-- D. 360 Viewer (dark) -->
+  <!-- D. 360 Viewer (white) -->
   <section class="hw-viewer-wrap">
     <div class="hw-viewer-inner">
-      <h2 class="hw-viewer-title">360° 드론 조망</h2>
+      <p class="hw-viewer-eyebrow">360° DRONE VIEW</p>
+      <h2 class="hw-viewer-title">드론 조망 둘러보기</h2>
       <p class="hw-viewer-desc">동 · 호라인 · 고도를 선택하면 해당 시점의 파노라마를 불러옵니다</p>
 
       <!-- Dong tabs -->
@@ -611,17 +621,17 @@
 
       // Wrap with info bar
       const wrap = document.createElement('div');
-      wrap.style.cssText = 'margin-top:28px; border:1px solid #333; border-radius:var(--radius-md); overflow:hidden;';
+      wrap.style.cssText = 'margin-top:28px; border:1px solid #E5DDC8; border-radius:var(--radius-md); overflow:hidden;';
       const bar = document.createElement('div');
-      bar.style.cssText = 'padding:12px 20px; background:#1a1a1a; border-bottom:1px solid #333; display:flex; align-items:center; gap:10px; font-size:14px; flex-wrap:wrap;';
+      bar.style.cssText = 'padding:12px 20px; background:#f8f5f0; border-bottom:1px solid #E5DDC8; display:flex; align-items:center; gap:10px; font-size:14px; flex-wrap:wrap;';
       bar.innerHTML =
-        '<span style="font-weight:500;color:#fff;">한화포레나 부산대연</span>' +
-        '<span style="color:#555;font-size:11px;">·</span>' +
-        '<span style="color:#aaa;">' + dong + '동</span>' +
-        '<span style="color:#555;font-size:11px;">·</span>' +
-        '<span style="color:#aaa;">' + line + '호라인</span>' +
-        '<span style="color:#555;font-size:11px;">·</span>' +
-        '<span style="color:var(--accent);font-weight:500;">지상 ' + h + 'm</span>';
+        '<span style="font-weight:500;color:#1A1A1A;">한화포레나 부산대연</span>' +
+        '<span style="color:#C9BFAE;font-size:11px;">·</span>' +
+        '<span style="color:#6B6B6B;">' + dong + '동</span>' +
+        '<span style="color:#C9BFAE;font-size:11px;">·</span>' +
+        '<span style="color:#6B6B6B;">' + line + '호라인</span>' +
+        '<span style="color:#C9BFAE;font-size:11px;">·</span>' +
+        '<span style="color:#B8861F;font-weight:500;">지상 ' + h + 'm</span>';
 
       const panoDiv = document.createElement('div');
       panoDiv.id = 'pannellumEl';
@@ -646,7 +656,7 @@
           title: '한화포레나 부산대연 ' + dong + '동 ' + line + '호라인 지상' + h + 'm'
         });
       } catch(e) {
-        panoDiv.innerHTML = '<div style="height:520px;display:flex;align-items:center;justify-content:center;background:#1a1a1a;"><p style="color:#555;font-size:13px;">파노라마를 불러오는 중 오류가 발생했습니다</p></div>';
+        panoDiv.innerHTML = '<div style="height:520px;display:flex;align-items:center;justify-content:center;background:#f8f5f0;"><p style="color:#9A9A9A;font-size:13px;">파노라마를 불러오는 중 오류가 발생했습니다</p></div>';
       }
 
       wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

@@ -1,6 +1,6 @@
-// compress-photos.js
+// compress-photos.js v4
 // Cloudflare Pages 25 MiB 제한 대응 + Pannellum 로딩 최적화
-// 목표: 모든 사진 2.5 MiB 이하 (로딩 4-5초 목표)
+// 목표: 모든 사진 2 MiB 이하 (워터마크 합성 후 추가 압축)
 // ⚠️ Windows 한글 경로 대응: 파일 경로 대신 Buffer 방식 사용
 
 const sharp = require('sharp');
@@ -8,8 +8,9 @@ const fs = require('fs');
 const path = require('path');
 
 const photosDir = path.join(__dirname, '..', 'public', 'photos');
-const TARGET_MAX_SIZE = 2.5 * 1024 * 1024; // 2.5 MiB
-const MAX_WIDTH = 8192; // 8K — Pannellum 웹 뷰어 최적 해상도
+const TARGET_MAX_SIZE = 2 * 1024 * 1024; // 2 MiB (v4: 2.5→2)
+const MAX_WIDTH = 6144;                   // 6K (v4: 8192→6144)
+const SKIP_DIRS = new Set(['optimized']);
 
 async function compressIfNeeded(filePath) {
   const stat = fs.statSync(filePath);
@@ -21,7 +22,7 @@ async function compressIfNeeded(filePath) {
   const inputBuffer = fs.readFileSync(filePath);
   const outputBuffer = await sharp(inputBuffer, { failOn: 'none' })
     .resize({ width: MAX_WIDTH, withoutEnlargement: true })
-    .jpeg({ quality: 75, mozjpeg: true, progressive: true })
+    .jpeg({ quality: 70, mozjpeg: true, progressive: true })  // v4: 75→70
     .toBuffer();
   fs.writeFileSync(filePath, outputBuffer);
   const sizeAfter = fs.statSync(filePath).size;
@@ -31,6 +32,7 @@ async function compressIfNeeded(filePath) {
 function walk(dir) {
   if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir).flatMap(item => {
+    if (SKIP_DIRS.has(item)) return [];
     const full = path.join(dir, item);
     const stat = fs.statSync(full);
     if (stat.isDirectory()) return walk(full);
@@ -69,7 +71,7 @@ async function main() {
   }
 
   if (totalCompressed === 0) {
-    console.log('  ✓ All files already within 2.5 MiB target.');
+    console.log('  ✓ All files already within 2 MiB target.');
   } else {
     const savedMB = (totalSaved / 1024 / 1024).toFixed(1);
     console.log(`\n📊 압축 완료: ${totalCompressed}장, ${savedMB}MB 절감`);

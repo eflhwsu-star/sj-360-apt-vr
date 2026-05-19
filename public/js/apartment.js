@@ -2,8 +2,9 @@
 // 동별 사진 추가 시 node scripts/scan-photos.js 실행 → buildings_data 자동 갱신
 
 (function () {
-  const PASSWORD     = 'sj360vr';
+  const PASSWORD        = 'sj360vr';
   const FREE_VIEW_LIMIT = 2;
+  const STORAGE_KEY     = 'sj_unlocked';
 
   // 단지별 유튜브 영상 map (없으면 placeholder)
   const aptVideos = {
@@ -344,7 +345,7 @@
   let _activeBtn = null;
 
   function tryViewVR(scene, building, apt, btn) {
-    const unlocked  = sessionStorage.getItem('sj_unlocked') === 'true';
+    const unlocked  = localStorage.getItem(STORAGE_KEY) === 'true';
     const viewCount = parseInt(sessionStorage.getItem('sj_view_count') || '0', 10);
 
     if (unlocked) {
@@ -409,17 +410,13 @@
       const imagePath = encodeURI(rawPath);
 
       viewer.innerHTML = `
-        <div class="section-inner">
+        <div class="section-inner viewer-section-inner">
           <div class="viewer-info-bar">
             <span class="viewer-info-apartment">${apartmentTitle}</span>
             ${infoHtml}
           </div>
           <div class="viewer-container">
-            <div id="pannellum-viewer" style="width:100%;height:600px;"></div>
-            <div class="viewer-watermark">
-              <div class="viewer-watermark-title">하이엔드 아파트 전문 SJ부동산</div>
-              <div class="viewer-watermark-contact">전수진 · 010-2879-5452</div>
-            </div>
+            <div id="pannellum-viewer"></div>
           </div>
         </div>
       `;
@@ -434,7 +431,16 @@
         showControls: true,
         hfov:    100,
         minHfov: 50,
-        maxHfov: 120
+        maxHfov: 120,
+        hotSpots: [
+          {
+            pitch:  -25,
+            yaw:    0,
+            type:   'info',
+            text:   '하이엔드 아파트 전문 SJ부동산 | 전수진 010-2879-5452',
+            URL:    'tel:01028795452'
+          }
+        ]
       });
 
     } else {
@@ -466,7 +472,7 @@
   function submitPassword() {
     const input = document.getElementById('modalPassword').value;
     if (input === PASSWORD) {
-      sessionStorage.setItem('sj_unlocked', 'true');
+      localStorage.setItem(STORAGE_KEY, 'true');
       closeModal();
     } else {
       const errEl = document.getElementById('modalError');

@@ -22,21 +22,18 @@
     </a>
   </header>
 
-  <!-- ① 드론 항공뷰 히어로 (crossfade) -->
-  <!-- 이미지: public/img/hero/1~5.webp 배치 필요 (Pexels 항공 드론 사진) -->
-  <section class="hero-crossfade-section" aria-label="히어로 배너">
-    <div class="hero-cf-bg">
-      <img class="hero-cf-img" src="img/hero/1.webp" alt="" loading="eager" decoding="async">
-      <img class="hero-cf-img" src="img/hero/2.webp" alt="" loading="lazy"  decoding="async">
-      <img class="hero-cf-img" src="img/hero/3.webp" alt="" loading="lazy"  decoding="async">
-      <img class="hero-cf-img" src="img/hero/4.webp" alt="" loading="lazy"  decoding="async">
-      <img class="hero-cf-img" src="img/hero/5.webp" alt="" loading="lazy"  decoding="async">
-      <div class="hero-cf-overlay"></div>
-    </div>
-    <div class="hero-cf-content">
-      <h1 class="hero-cf-title">부산 투자,<br>이제는 직접 봐야 합니다.</h1>
-      <p class="hero-cf-sub">서울·수도권에서도 부산 분양 현장 조망을 360°로</p>
-      <a href="hanwha-daeyeon.html" class="hero-cf-cta">
+  <!-- ① 히어로 슬라이드쇼 (4장, 5초 자동 전환) -->
+  <section class="hero-slideshow" aria-label="히어로 배너">
+    <div class="hero-slide active" style="background-image:url('img/hero/1.jpg')" aria-hidden="true"></div>
+    <div class="hero-slide"        style="background-image:url('img/hero/2.jpg')" aria-hidden="true"></div>
+    <div class="hero-slide"        style="background-image:url('img/hero/3.jpg')" aria-hidden="true"></div>
+    <div class="hero-slide"        style="background-image:url('img/hero/4.jpg')" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <h1>부산 투자,<br>이제는 직접 봐야 합니다.</h1>
+      <p class="hero-tagline">한 번도 안 온 고객은 있어도 한 번만 온 고객은 없다</p>
+      <p class="hero-subtagline">드론으로 직접 촬영한 실제 분양 현장 360° 조망</p>
+      <a href="hanwha-daeyeon.html" class="hero-cf-cta" style="margin-top:28px;display:inline-flex;align-items:center;gap:8px;">
         지금 가장 핫한 VR 보기
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

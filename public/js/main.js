@@ -1,4 +1,15 @@
 (function () {
+  // ── 히어로 슬라이드쇼 (5초마다 자동 전환) ──
+  const slides = document.querySelectorAll('.hero-slide');
+  if (slides.length > 1) {
+    let currentSlide = 0;
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 5000);
+  }
+
   fetch('data/busan.json')
     .then(r => r.json())
     .then(data => renderDistricts(data))

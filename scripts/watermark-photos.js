@@ -1,7 +1,6 @@
-// watermark-photos.js
-// 원본(photos-original/) → 워터마크 5방향 합성 → photos/
-// 4방향 + wrap: 정면(50%) / 좌(25%) / 우(75%) / 뒤 좌끝(0%) / 뒤 우끝(wrap)
-// Windows 한글 경로 대응: Buffer 방식
+// watermark-photos.js v3 — 2방향 (정면 yaw:0 + 후면 yaw:180)
+// 원본(photos-original/) → 워터마크 합성 → photos/
+// 180도 간격으로 어느 방향을 보든 최대 90도 안에 워터마크 시야 진입
 
 const sharp = require('sharp');
 const fs    = require('fs');
@@ -37,27 +36,23 @@ function createWatermarkSvg(scale = 1.0) {
 async function addWatermark(originalPath, outputPath) {
   const inputBuffer = fs.readFileSync(originalPath);
   const image = sharp(inputBuffer, { failOn: 'none' });
-  const meta = await image.metadata();
+  const meta  = await image.metadata();
   const { width, height } = meta;
 
   const wmScale  = Math.max(0.8, (width / 8000) * 1.2);
-  const watermarkSvg = createWatermarkSvg(wmScale);
+  const svgStr   = createWatermarkSvg(wmScale);
   const wmWidth  = Math.round(720 * wmScale);
   const wmHeight = Math.round(120 * wmScale);
+  const yPos     = Math.round(height * 0.55 - wmHeight / 2);
 
-  const yPos = Math.round(height * 0.55 - wmHeight / 2);
-
-  // 5위치: 360° 어느 방향에서도 1개 이상 시야에 들어옴
+  // 2방향: 정면(width 50%) + 후면(width 0% = 좌끝, sphere wrap으로 정확히 yaw 180)
   const positions = [
-    { left: Math.round(width * 0.5  - wmWidth / 2), top: yPos },  // 정면
-    { left: Math.round(width * 0.25 - wmWidth / 2), top: yPos },  // 좌
-    { left: Math.round(width * 0.75 - wmWidth / 2), top: yPos },  // 우
-    { left: Math.round(width * 0.0),                top: yPos },  // 뒤 좌끝
-    { left: Math.round(width - wmWidth),            top: yPos },  // 뒤 우끝 (wrap)
+    { left: Math.round(width * 0.5 - wmWidth / 2), top: yPos },  // 정면 (yaw  0°)
+    { left: 0,                                       top: yPos },  // 후면 (yaw 180°)
   ];
 
   const composites = positions.map(pos => ({
-    input: Buffer.from(watermarkSvg),
+    input: Buffer.from(svgStr),
     left:  Math.max(0, Math.min(pos.left, width - wmWidth)),
     top:   Math.max(0, Math.min(pos.top,  height - wmHeight)),
     blend: 'over'
@@ -90,7 +85,7 @@ async function main() {
   }
 
   const allOriginals = walk(originalDir);
-  console.log(`\n📸 총 ${allOriginals.length}장 워터마크 처리 시작\n`);
+  console.log(`\n📸 총 ${allOriginals.length}장 워터마크 처리 시작 (정면+후면 2방향)\n`);
 
   let processed = 0, failed = 0;
   const t0 = Date.now();
@@ -100,7 +95,6 @@ async function main() {
       const relativePath = path.relative(originalDir, originalPath);
       const outputPath   = path.join(photosDir, relativePath);
       const outputDir    = path.dirname(outputPath);
-
       if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
       await addWatermark(originalPath, outputPath);
@@ -116,13 +110,9 @@ async function main() {
     }
   }
 
-  const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
-  console.log(`\n📊 완료: ${processed}장 성공, ${failed}장 실패 (${elapsed}s)\n`);
-
+  const total = ((Date.now() - t0) / 1000).toFixed(1);
+  console.log(`\n📊 완료: ${processed}장 성공, ${failed}장 실패 (${total}s)\n`);
   if (failed > 0) process.exit(1);
 }
 
-main().catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+main().catch(err => { console.error(err); process.exit(1); });

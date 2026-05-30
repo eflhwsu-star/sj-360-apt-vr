@@ -762,14 +762,6 @@
   align-items: center;
   gap: 10px;
 }
-.youtube-badge {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--accent);
-  background: rgba(139, 111, 71, 0.1);
-  padding: 3px 10px;
-  border-radius: 12px;
-}
 .youtube-wrapper {
   position: relative;
   width: 100%;

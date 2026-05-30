@@ -27,14 +27,14 @@
         document.getElementById('apt-breadcrumb').innerHTML =
           `<a href="district.html?d=${apt.district_id}" class="back-link">← ${district.name}</a>`;
       }
-      init(apt, data.site_config || {});
+      init(apt);
     })
     .catch(e => console.error('데이터 로드 실패:', e));
 
   /* ════════════════════════════════════════
      init
   ════════════════════════════════════════ */
-  function init(apt, siteConfig) {
+  function init(apt) {
     renderComplexHeader(apt);
     renderHighlights(apt);
     renderUnitBreakdown(apt);
@@ -42,7 +42,7 @@
     renderSitemap(apt);
     renderBuildings(apt);
     renderFacilities(apt);
-    renderYoutubeSection(apt, siteConfig);
+    renderYoutubeSection(apt);
     initViewer();
     initModalEvents();
   }
@@ -336,26 +336,21 @@
     return match ? match[1] : null;
   }
 
-  function renderYoutubeSection(apt, siteConfig) {
+  function renderYoutubeSection(apt) {
     const section = document.getElementById('youtube-section');
     if (!section) return;
 
-    const cfg      = siteConfig || {};
-    const videoUrl = apt.youtube_url || cfg.default_youtube_url;
-    const embedId  = getYoutubeEmbedId(videoUrl);
+    // youtube_url 없는 단지 → 섹션 미생성 (폴백 없음, VR만 표시)
+    if (!apt.youtube_url) { section.innerHTML = ''; return; }
+
+    const embedId = getYoutubeEmbedId(apt.youtube_url);
     if (!embedId) { section.innerHTML = ''; return; }
 
-    const isDefault = !apt.youtube_url;
-    const label = apt.youtube_url
-      ? (apt.youtube_label || `${apt.short_name || apt.name} 단지 영상`)
-      : (cfg.default_youtube_label || 'SJ부동산 안내 영상');
+    const label = apt.youtube_label || `${apt.short_name || apt.name} 단지 영상`;
 
     section.innerHTML = `
       <div class="youtube-section">
-        <h3 class="youtube-title">
-          🎬 ${label}
-          ${isDefault ? '<span class="youtube-badge">SJ부동산 안내</span>' : ''}
-        </h3>
+        <h3 class="youtube-title">🎬 ${label}</h3>
         <div class="youtube-wrapper">
           <iframe
             src="https://www.youtube.com/embed/${embedId}?rel=0&modestbranding=1"

@@ -2,8 +2,8 @@
   "city": "부산광역시",
   "city_en": "Busan",
   "site_config": {
-    "default_youtube_url": "https://youtu.be/L74w1FyVKGQ",
-    "default_youtube_label": "SJ부동산 오시는 길"
+    "main_youtube_url": "https://youtu.be/L74w1FyVKGQ",
+    "main_youtube_label": "SJ부동산 오시는 길"
   },
   "districts": [
     {

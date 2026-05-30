@@ -27,14 +27,14 @@
         document.getElementById('apt-breadcrumb').innerHTML =
           `<a href="district.html?d=${apt.district_id}" class="back-link">← ${district.name}</a>`;
       }
-      init(apt);
+      init(apt, data.site_config || {});
     })
     .catch(e => console.error('데이터 로드 실패:', e));
 
   /* ════════════════════════════════════════
      init
   ════════════════════════════════════════ */
-  function init(apt) {
+  function init(apt, siteConfig) {
     renderComplexHeader(apt);
     renderHighlights(apt);
     renderUnitBreakdown(apt);
@@ -42,6 +42,7 @@
     renderSitemap(apt);
     renderBuildings(apt);
     renderFacilities(apt);
+    renderYoutubeSection(apt, siteConfig);
     initViewer();
     initModalEvents();
   }
@@ -324,6 +325,49 @@
 
     inner.appendChild(grid);
     section.appendChild(inner);
+  }
+
+  /* ════════════════════════════════════════
+     유튜브 영상 섹션 (단지별 영상 또는 기본 폴백)
+  ════════════════════════════════════════ */
+  function getYoutubeEmbedId(url) {
+    if (!url) return null;
+    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]+)/);
+    return match ? match[1] : null;
+  }
+
+  function renderYoutubeSection(apt, siteConfig) {
+    const section = document.getElementById('youtube-section');
+    if (!section) return;
+
+    const cfg      = siteConfig || {};
+    const videoUrl = apt.youtube_url || cfg.default_youtube_url;
+    const embedId  = getYoutubeEmbedId(videoUrl);
+    if (!embedId) { section.innerHTML = ''; return; }
+
+    const isDefault = !apt.youtube_url;
+    const label = apt.youtube_url
+      ? (apt.youtube_label || `${apt.short_name || apt.name} 단지 영상`)
+      : (cfg.default_youtube_label || 'SJ부동산 안내 영상');
+
+    section.innerHTML = `
+      <div class="youtube-section">
+        <h3 class="youtube-title">
+          🎬 ${label}
+          ${isDefault ? '<span class="youtube-badge">SJ부동산 안내</span>' : ''}
+        </h3>
+        <div class="youtube-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/${embedId}?rel=0&modestbranding=1"
+            title="${label}"
+            frameborder="0"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    `;
   }
 
   /* ════════════════════════════════════════

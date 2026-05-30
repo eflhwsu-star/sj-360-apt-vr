@@ -1,6 +1,10 @@
 {
   "city": "부산광역시",
   "city_en": "Busan",
+  "site_config": {
+    "default_youtube_url": "https://youtu.be/L74w1FyVKGQ",
+    "default_youtube_label": "SJ부동산 오시는 길"
+  },
   "districts": [
     {
       "id": "haeundae",
@@ -1212,7 +1216,9 @@
             }
           ]
         }
-      ]
+      ],
+      "youtube_url": "https://youtu.be/Jqwkj4wN9M0",
+      "youtube_label": "알티에로 광안 단지 영상"
     },
     "marincity_xi": {
       "id": "marincity_xi",

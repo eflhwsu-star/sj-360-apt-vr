@@ -7,3 +7,4 @@ node_modules/
 .idea/
 .wrangler/
 photos-original/
+_unregistered_photos/

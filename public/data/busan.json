@@ -9,7 +9,8 @@
       "subtitle": "부산 동부 프리미엄 생활권",
       "apartment_ids": [
         "venuve",
-        "leel_centum"
+        "leel_centum",
+        "marincity_xi"
       ]
     },
     {
@@ -18,7 +19,8 @@
       "name_en": "Suyeong",
       "subtitle": "광안리 오션뷰 생활권",
       "apartment_ids": [
-        "summit_namcheon"
+        "summit_namcheon",
+        "altiero_gwangan"
       ]
     },
     {
@@ -1017,6 +1019,299 @@
             {
               "name": "한화포레나 부산대연 문주",
               "file": "한화포레나 부산대연 문주.JPG"
+            }
+          ]
+        }
+      ]
+    },
+    "altiero_gwangan": {
+      "id": "altiero_gwangan",
+      "district_id": "suyeong",
+      "hosting": "self",
+      "photos_folder": "알티에로",
+      "name": "알티에로 광안",
+      "name_en": "ALTIERO Gwangan",
+      "short_name": "알티에로 광안",
+      "location": "부산광역시 수영구 민락동 (옛 부산MBC 부지)",
+      "developer": "금강주택",
+      "constructor": "금강주택",
+      "project_type": "옛 부산MBC 부지 하이엔드 주거단지",
+      "scale": "지상 최고 27층 / 5개동",
+      "households_total": 366,
+      "households_general": 366,
+      "unit_breakdown": [
+        {
+          "size": "151㎡",
+          "type_count": "",
+          "households": 75
+        },
+        {
+          "size": "153㎡",
+          "type_count": "",
+          "households": 69
+        },
+        {
+          "size": "154㎡",
+          "type_count": "",
+          "households": 96
+        },
+        {
+          "size": "160㎡",
+          "type_count": "",
+          "households": 99
+        },
+        {
+          "size": "191㎡",
+          "type_count": "펜트하우스급",
+          "households": 27
+        }
+      ],
+      "sale_status": "2026년 6월 분양 예정",
+      "move_in": "미정 (분양 예정 단지)",
+      "highlights": [
+        "옛 부산MBC 부지, 광안권 신주거타운 대장주 기대",
+        "배산임수 입지 - 북측 백산 + 남측 광안리 해변",
+        "오션뷰 + 리버뷰 동시 조망 특화 설계",
+        "전용 151~191㎡ 대형 위주 하이퍼엔드 구성",
+        "글로벌 설계사 퍼킨스 이스트만 입면 + 조경설계 PWP + 조명 bpi",
+        "클럽 알티에로: 야외 인피니티풀·피트니스·골프클럽·스쿼시·라운지 + CJ프레시웨이 조·석식"
+      ],
+      "transit_infra": [
+        "광안대교 조망권 확보 입지",
+        "광안리 해변 생활권",
+        "민락동 1만 2000여 세대 신주거타운",
+        "갤러리: 해운대구 우동 650-2"
+      ],
+      "official_url": "https://altie.co.kr/",
+      "buildings_data": [
+        {
+          "id": "101",
+          "name": "101동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": null,
+              "height": "20m",
+              "file": "101 20.JPG"
+            },
+            {
+              "line": null,
+              "height": "40m",
+              "file": "101 40.JPG"
+            },
+            {
+              "line": null,
+              "height": "60m",
+              "file": "101 60.JPG"
+            },
+            {
+              "line": null,
+              "height": "80m",
+              "file": "101 80.JPG"
+            },
+            {
+              "line": null,
+              "height": "100m",
+              "file": "101 100.JPG"
+            }
+          ]
+        },
+        {
+          "id": "102",
+          "name": "102동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": null,
+              "height": "20m",
+              "file": "102 20.JPG"
+            },
+            {
+              "line": null,
+              "height": "40m",
+              "file": "102 40.JPG"
+            },
+            {
+              "line": null,
+              "height": "60m",
+              "file": "102 60.JPG"
+            },
+            {
+              "line": null,
+              "height": "80m",
+              "file": "102 80.JPG"
+            },
+            {
+              "line": null,
+              "height": "100m",
+              "file": "102 100.JPG"
+            }
+          ]
+        },
+        {
+          "id": "103",
+          "name": "103동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": null,
+              "height": "20m",
+              "file": "103 20.JPG"
+            },
+            {
+              "line": null,
+              "height": "40m",
+              "file": "103 40.JPG"
+            },
+            {
+              "line": null,
+              "height": "60m",
+              "file": "103 60.JPG"
+            },
+            {
+              "line": null,
+              "height": "80m",
+              "file": "103 80.JPG"
+            },
+            {
+              "line": null,
+              "height": "100m",
+              "file": "103 100.JPG"
+            }
+          ]
+        },
+        {
+          "id": "104",
+          "name": "104동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": null,
+              "height": "20m",
+              "file": "104 20.JPG"
+            },
+            {
+              "line": null,
+              "height": "40m",
+              "file": "104 40.JPG"
+            },
+            {
+              "line": null,
+              "height": "60m",
+              "file": "104 60.JPG"
+            },
+            {
+              "line": null,
+              "height": "80m",
+              "file": "104 80.JPG"
+            },
+            {
+              "line": null,
+              "height": "100m",
+              "file": "104 100.JPG"
+            }
+          ]
+        }
+      ]
+    },
+    "marincity_xi": {
+      "id": "marincity_xi",
+      "district_id": "haeundae",
+      "hosting": "self",
+      "photos_folder": "마린시티 자이",
+      "name": "마린시티 자이",
+      "name_en": "Marin City Xi",
+      "short_name": "마린시티 자이",
+      "location": "부산광역시 해운대구 우동 1405-1 (마린시티1로 9)",
+      "developer": "GS건설",
+      "constructor": "GS건설",
+      "project_type": "마린시티 하이엔드 주상복합",
+      "scale": "지상 49층 / 지하 6층",
+      "households_total": 258,
+      "households_general": 258,
+      "unit_breakdown": [
+        {
+          "size": "33평(전용 84㎡대)",
+          "type_count": "",
+          "households": null
+        },
+        {
+          "size": "34평",
+          "type_count": "",
+          "households": null
+        },
+        {
+          "size": "35평",
+          "type_count": "",
+          "households": null
+        },
+        {
+          "size": "36평",
+          "type_count": "",
+          "households": null
+        },
+        {
+          "size": "45평",
+          "type_count": "대형",
+          "households": null
+        }
+      ],
+      "sale_status": "입주 완료 (기존 단지)",
+      "move_in": "2019년 10월 입주",
+      "highlights": [
+        "해운대 마린시티 핵심 입지 (49층 랜드마크)",
+        "광안대교·수영만 오션뷰 조망",
+        "더베이101·마린시티 상권 도보권",
+        "33~45평 중대형 구성, 258세대 희소 단지",
+        "마린시티1로 직접 면한 프리미엄 입지"
+      ],
+      "transit_infra": [
+        "더베이101 도보권",
+        "동백역·해운대해수욕장 인접",
+        "마린시티 상업시설 (롯데마트·영화관 등) 생활권",
+        "광안대교 야경 조망"
+      ],
+      "official_url": "https://kbland.kr/c/33106",
+      "buildings_data": [
+        {
+          "id": "101",
+          "name": "101동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": null,
+              "height": "30m",
+              "file": "101 30.JPG"
+            },
+            {
+              "line": null,
+              "height": "50m",
+              "file": "101 50.JPG"
+            },
+            {
+              "line": null,
+              "height": "70m",
+              "file": "101 70.JPG"
+            },
+            {
+              "line": null,
+              "height": "90m",
+              "file": "101 90.JPG"
+            },
+            {
+              "line": null,
+              "height": "110m",
+              "file": "101 110.JPG"
+            },
+            {
+              "line": null,
+              "height": "130m",
+              "file": "101 130.JPG"
+            },
+            {
+              "line": null,
+              "height": "150m",
+              "file": "101 150.JPG"
             }
           ]
         }

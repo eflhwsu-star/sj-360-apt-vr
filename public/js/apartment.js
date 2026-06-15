@@ -6,11 +6,6 @@
   const FREE_VIEW_LIMIT = 2;
   const STORAGE_KEY     = 'sj_unlocked';
 
-  // 단지별 유튜브 영상 map (없으면 placeholder)
-  const aptVideos = {
-    'venuve': { id: 'UDV4SFvFjX8', start: 159 }
-  };
-
   const params      = new URLSearchParams(window.location.search);
   const apartmentId = params.get('id') || 'venuve';
 
@@ -42,7 +37,6 @@
     renderSitemap(apt);
     renderBuildings(apt);
     renderFacilities(apt);
-    renderYoutubeSection(apt);
     initViewer();
     initModalEvents();
   }
@@ -57,24 +51,21 @@
       .replace('번지 일원', '')
       .replace('번지', '');
 
-    const vid = aptVideos[apartmentId] || null;
-    const videoSlotHtml = vid
-      ? `<div class="aspect-video" style="margin-top:24px;max-width:720px;">
-           <iframe
-             src="https://www.youtube.com/embed/${vid.id}?start=${vid.start}&rel=0&modestbranding=1"
-             allowfullscreen loading="lazy" title="${apt.name} 현장 영상">
-           </iframe>
+    // 유튜브 영상: youtube_url 있으면 헤더 슬롯에 재생, 없으면 슬롯 자체 미생성(숨김)
+    const embedId = apt.youtube_url ? getYoutubeEmbedId(apt.youtube_url) : null;
+    const videoLabel = apt.youtube_label || `${apt.short_name || apt.name} 단지 영상`;
+    const videoSlotHtml = embedId
+      ? `<div class="header-video-wrap" style="margin-top:24px;max-width:720px;">
+           <div class="youtube-wrapper">
+             <iframe
+               src="https://www.youtube.com/embed/${embedId}?rel=0&modestbranding=1"
+               title="${videoLabel}" frameborder="0" loading="lazy"
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+               allowfullscreen>
+             </iframe>
+           </div>
          </div>`
-      : `<div class="aspect-video video-placeholder" style="margin-top:24px;max-width:720px;">
-           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5"
-             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-             <path d="M3 3l18 18M10.29 10.29A3 3 0 0 0 12 15a3 3 0 0 0 2.71-1.71M12 9a3 3 0 0 1 3 3"/>
-             <path d="M9 6.527A10.95 10.95 0 0 1 12 6c4 0 7.333 2.333 10 7-1.09 1.905-2.324 3.419-3.662
-               4.527M4.547 9.532C3.272 10.619 2.1 12.049 1 14c2.667 4.667 6 7 10 7a10.88 10.88 0 0 0
-               3.528-.578"/>
-           </svg>
-           <p style="color:#666;font-size:13px;margin:0;">영상 준비중</p>
-         </div>`;
+      : '';
 
     document.getElementById('complex-header').innerHTML = `
       <div class="section-inner">
@@ -328,41 +319,12 @@
   }
 
   /* ════════════════════════════════════════
-     유튜브 영상 섹션 (단지별 영상 또는 기본 폴백)
+     유튜브 임베드 ID 추출 (헤더 영상 슬롯에서 사용)
   ════════════════════════════════════════ */
   function getYoutubeEmbedId(url) {
     if (!url) return null;
     const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]+)/);
     return match ? match[1] : null;
-  }
-
-  function renderYoutubeSection(apt) {
-    const section = document.getElementById('youtube-section');
-    if (!section) return;
-
-    // youtube_url 없는 단지 → 섹션 미생성 (폴백 없음, VR만 표시)
-    if (!apt.youtube_url) { section.innerHTML = ''; return; }
-
-    const embedId = getYoutubeEmbedId(apt.youtube_url);
-    if (!embedId) { section.innerHTML = ''; return; }
-
-    const label = apt.youtube_label || `${apt.short_name || apt.name} 단지 영상`;
-
-    section.innerHTML = `
-      <div class="youtube-section">
-        <h3 class="youtube-title">🎬 ${label}</h3>
-        <div class="youtube-wrapper">
-          <iframe
-            src="https://www.youtube.com/embed/${embedId}?rel=0&modestbranding=1"
-            title="${label}"
-            frameborder="0"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-    `;
   }
 
   /* ════════════════════════════════════════

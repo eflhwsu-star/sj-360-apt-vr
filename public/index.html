@@ -33,7 +33,7 @@
       <h1>부산 투자,<br>이제는 직접 봐야 합니다.</h1>
       <p class="hero-tagline">한 번도 안 온 고객은 있어도 한 번만 온 고객은 없다</p>
       <p class="hero-subtagline">드론으로 직접 촬영한 실제 분양 현장 360° 조망</p>
-      <a href="hanwha-daeyeon.html" class="hero-cf-cta" style="margin-top:28px;display:inline-flex;align-items:center;gap:8px;">
+      <a href="hanwha-daeyeon.html" id="hero-cta" class="hero-cf-cta" style="margin-top:28px;display:inline-flex;align-items:center;gap:8px;">
         지금 가장 핫한 VR 보기
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -67,47 +67,19 @@
     </div>
   </section>
 
-  <!-- ③ 이번주 픽 (핫한 VR) -->
-  <section class="hot-pick-section">
+  <!-- ③ 이번주 픽 (핫한 VR) — busan.json is_featured 플래그로 자동 노출 -->
+  <section class="hot-pick-section" id="hot-pick-section" style="display:none;">
     <div class="section-inner-wide">
       <h2 class="section-title">지금 가장 핫한 VR</h2>
-      <a href="hanwha-daeyeon.html" class="hot-pick-card" aria-label="한화포레나 부산대연 VR 보기">
-        <div class="hot-pick-video">
-          <span class="hot-pick-badge">이번주 픽</span>
-          <!-- youtube: null → 영상 준비중 placeholder -->
-          <div class="aspect-video video-placeholder">
-            <i class="ti ti-video-off" style="font-size:28px;color:#aaa;"></i>
-            <p style="font-size:13px;color:#888;">영상 준비중</p>
-          </div>
-        </div>
-        <div class="hot-pick-body">
-          <p class="hot-pick-loc">부산 남구 대연동</p>
-          <h3 class="hot-pick-name">한화포레나 부산대연</h3>
-          <p class="hot-pick-desc">6개동 367세대 · 전용 59·72·84㎡ · 2026.5 입주<br>대연라인 핵심, 후분양 100% 완판</p>
-          <span class="hot-pick-cta">360° 드론 조망 보기 →</span>
-        </div>
-      </a>
+      <div id="hot-pick-grid"></div>
     </div>
   </section>
 
-  <!-- ④ 신규 VR (가로 스크롤) -->
-  <section class="new-vr-section">
+  <!-- ④ 신규 VR (가로 스크롤) — busan.json is_new 플래그로 자동 노출 -->
+  <section class="new-vr-section" id="new-vr-section" style="display:none;">
     <div class="section-inner-wide">
       <h2 class="section-title">신규 VR</h2>
-      <div class="new-vr-scroll">
-        <a href="hanwha-daeyeon.html" class="new-vr-card">
-          <div class="new-vr-img-wrap">
-            <div class="new-vr-gradient"></div>
-            <span class="new-vr-badge">NEW</span>
-          </div>
-          <div class="new-vr-body">
-            <p class="new-vr-loc">부산 남구</p>
-            <h3 class="new-vr-name">한화포레나 부산대연</h3>
-            <p class="new-vr-meta">6동 · 367세대 · 2026.5</p>
-          </div>
-        </a>
-        <!-- 추가 단지가 생기면 a.new-vr-card 복사하여 추가 -->
-      </div>
+      <div class="new-vr-scroll" id="new-vr-scroll"></div>
     </div>
   </section>
 

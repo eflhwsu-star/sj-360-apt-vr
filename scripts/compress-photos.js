@@ -14,19 +14,25 @@ const SKIP_DIRS = new Set(['optimized']);
 
 async function compressIfNeeded(filePath) {
   const stat = fs.statSync(filePath);
-  if (stat.size <= TARGET_MAX_SIZE) {
-    return { compressed: false, sizeBefore: stat.size, sizeAfter: stat.size };
-  }
-  const sizeBefore = stat.size;
   // Buffer 방식: Windows 한글 경로 sharp 오픈 오류 우회
   const inputBuffer = fs.readFileSync(filePath);
+  const meta = await sharp(inputBuffer, { failOn: 'none' }).metadata();
+
+  // 트리거 조건: 바이트 초과 OR 해상도 초과 (해상도 초과 시 pannellum 로딩 멈춤 방지)
+  const tooBig   = stat.size > TARGET_MAX_SIZE;
+  const tooWide  = meta.width > MAX_WIDTH;
+  if (!tooBig && !tooWide) {
+    return { compressed: false, sizeBefore: stat.size, sizeAfter: stat.size };
+  }
+
+  const sizeBefore = stat.size;
   const outputBuffer = await sharp(inputBuffer, { failOn: 'none' })
     .resize({ width: MAX_WIDTH, withoutEnlargement: true })
     .jpeg({ quality: 70, mozjpeg: true, progressive: true })  // v4: 75→70
     .toBuffer();
   fs.writeFileSync(filePath, outputBuffer);
   const sizeAfter = fs.statSync(filePath).size;
-  return { compressed: true, sizeBefore, sizeAfter };
+  return { compressed: true, sizeBefore, sizeAfter, reason: tooWide ? `${meta.width}px>6144` : 'size' };
 }
 
 function walk(dir) {

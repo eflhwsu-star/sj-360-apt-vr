@@ -24,7 +24,8 @@
       "subtitle": "광안리 오션뷰 생활권",
       "apartment_ids": [
         "summit_namcheon",
-        "altiero_gwangan"
+        "altiero_gwangan",
+        "hyperion_gwangan"
       ]
     },
     {
@@ -1032,6 +1033,11 @@
       "id": "altiero_gwangan",
       "district_id": "suyeong",
       "hosting": "self",
+      "is_featured": true,
+      "is_new": true,
+      "card_loc": "부산 수영구 민락동",
+      "card_desc": "옛 부산MBC 부지 · 지상 27층 5개동 366세대<br>광안리 도보권 하이엔드 주거단지",
+      "card_meta": "5개동 · 366세대 · 분양 예정",
       "photos_folder": "알티에로",
       "name": "알티에로 광안",
       "name_en": "ALTIERO Gwangan",
@@ -1224,6 +1230,9 @@
       "id": "marincity_xi",
       "district_id": "haeundae",
       "hosting": "self",
+      "is_new": true,
+      "card_loc": "부산 해운대구 우동",
+      "card_meta": "지상 49층 · 258세대 · 마린시티",
       "photos_folder": "마린시티 자이",
       "name": "마린시티 자이",
       "name_en": "Marin City Xi",
@@ -1318,6 +1327,300 @@
               "line": null,
               "height": "150m",
               "file": "101 150.JPG"
+            }
+          ]
+        }
+      ]
+    },
+    "hyperion_gwangan": {
+      "id": "hyperion_gwangan",
+      "district_id": "suyeong",
+      "hosting": "self",
+      "is_new": true,
+      "card_loc": "부산 수영구 민락동",
+      "card_meta": "5개동 · 265세대 · 광안리 오션뷰",
+      "photos_folder": "광안 하이페리온",
+      "name": "광안 현대하이페리온",
+      "name_en": "Gwangan Hyundai Hyperion",
+      "short_name": "광안 현대하이페리온",
+      "location": "부산광역시 수영구 민락동 266",
+      "developer": "현대산업개발",
+      "constructor": "현대산업개발",
+      "project_type": "광안리 대형 평형 주거단지",
+      "scale": "지하 2층 ~ 지상 15층 / 5개동",
+      "households_total": 265,
+      "households_general": 265,
+      "unit_breakdown": [
+        {
+          "size": "49평",
+          "type_count": "",
+          "households": null
+        },
+        {
+          "size": "56평",
+          "type_count": "",
+          "households": null
+        },
+        {
+          "size": "62평",
+          "type_count": "",
+          "households": null
+        },
+        {
+          "size": "63평",
+          "type_count": "대형",
+          "households": null
+        }
+      ],
+      "sale_status": "입주 완료 (기존 단지)",
+      "move_in": "2007년 1월 입주 (약 19년차)",
+      "highlights": [
+        "광안리 해변·광안대교 오션뷰 조망",
+        "민락동 조용한 주거 입지",
+        "세대당 주차 2대 (대형 평형 프리미엄)",
+        "49~63평 대형 위주 265세대 희소 단지",
+        "광안리 해변·민락수변공원 도보 생활권"
+      ],
+      "transit_infra": [
+        "광안리해수욕장·민락수변공원 인근",
+        "광안대교 진입 차량 인접",
+        "지하철 2호선 광안역·수영역 생활권",
+        "민락동 회센터·먹자상권 도보권"
+      ],
+      "official_url": "https://litt.ly/sj5452",
+      "buildings_data": [
+        {
+          "id": "101",
+          "name": "101동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": "1,2",
+              "height": "20m",
+              "file": "101 1,2 20.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "40m",
+              "file": "101 1,2 40.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "55m",
+              "file": "101 1,2 55.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "20m",
+              "file": "101 2,3 20.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "40m",
+              "file": "101 2,3 40.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "55m",
+              "file": "101 2,3 55.JPG"
+            },
+            {
+              "line": "3",
+              "height": "20m",
+              "file": "101 3 20.JPG"
+            },
+            {
+              "line": "3",
+              "height": "40m",
+              "file": "101 3 40.JPG"
+            },
+            {
+              "line": "3",
+              "height": "55m",
+              "file": "101 3 55.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "20m",
+              "file": "101 4,5 20.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "40m",
+              "file": "101 4,5 40.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "55m",
+              "file": "101 4,5 55.JPG"
+            }
+          ]
+        },
+        {
+          "id": "102",
+          "name": "102동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": "1,2",
+              "height": "20m",
+              "file": "102 1,2 20.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "40m",
+              "file": "102 1,2 40.JPG"
+            }
+          ]
+        },
+        {
+          "id": "103",
+          "name": "103동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": "1,2",
+              "height": "20m",
+              "file": "103 1,2 20.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "40m",
+              "file": "103 1,2 40.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "20m",
+              "file": "103 2,3 20.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "40m",
+              "file": "103 2,3 40.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "55m",
+              "file": "103 2,3 55.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "20m",
+              "file": "103 3,4 20.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "40m",
+              "file": "103 3,4 40.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "55m",
+              "file": "103 3,4 55.JPG"
+            }
+          ]
+        },
+        {
+          "id": "104",
+          "name": "104동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": "1,2",
+              "height": "20m",
+              "file": "104 1,2 20.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "40m",
+              "file": "104 1,2 40.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "55m",
+              "file": "104 1,2 55.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "20m",
+              "file": "104 2,3 20.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "40m",
+              "file": "104 2,3 40.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "55m",
+              "file": "104 2,3 55.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "20m",
+              "file": "104 3,4 20.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "40m",
+              "file": "104 3,4 40.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "55m",
+              "file": "104 3,4 55.JPG"
+            }
+          ]
+        },
+        {
+          "id": "105",
+          "name": "105동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": "1,2",
+              "height": "20m",
+              "file": "105 1,2 20.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "40m",
+              "file": "105 1,2 40.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "55m",
+              "file": "105 1,2 55.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "20m",
+              "file": "105 2,3 20.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "40m",
+              "file": "105 2,3 40.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "55m",
+              "file": "105 2,3 55.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "20m",
+              "file": "105 3,4 20.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "40m",
+              "file": "105 3,4 40.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "55m",
+              "file": "105 3,4 55.JPG"
             }
           ]
         }

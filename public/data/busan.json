@@ -25,7 +25,9 @@
       "apartment_ids": [
         "summit_namcheon",
         "altiero_gwangan",
-        "hyperion_gwangan"
+        "hyperion_gwangan",
+        "samik_beach",
+        "hyeopjin_taeyang"
       ]
     },
     {
@@ -34,7 +36,9 @@
       "name_en": "Nam",
       "subtitle": "대연·용호 프리미엄 생활권",
       "apartment_ids": [
-        "foretna_busandaeyeon"
+        "foretna_busandaeyeon",
+        "gs_heights_xi",
+        "w_apt"
       ]
     }
   ],
@@ -1625,6 +1629,1327 @@
           ]
         }
       ]
+    },
+    "gs_heights_xi": {
+      "id": "gs_heights_xi",
+      "district_id": "nam",
+      "hosting": "self",
+      "is_new": true,
+      "is_featured": false,
+      "photos_folder": "GS하이츠 자이",
+      "name": "GS하이츠 자이",
+      "name_en": "GS Heights Xi",
+      "short_name": "GS하이츠 자이",
+      "location": "부산광역시 남구 용호동 197",
+      "developer": "GS건설 / 중앙건설",
+      "constructor": "GS건설 / 중앙건설",
+      "project_type": "용호동 주거단지",
+      "scale": "지상 30~39층 / 9개동",
+      "households_total": 1149,
+      "households_general": 1149,
+      "sale_status": "입주 완료",
+      "move_in": "2008년 4월",
+      "highlights": [
+        "광안대교·바다 조망 (용호만 매립지 입지)",
+        "34·38·49·56·63평 중대형 평형 구성",
+        "세대당 주차 2.1대 · 지상 30~39층 9개동 1,149세대 대단지",
+        "GS건설·중앙건설 시공 (2008년 4월 입주)"
+      ],
+      "transit_infra": [],
+      "official_url": "",
+      "youtube_url": "",
+      "buildings_data": [
+        {
+          "id": "301동",
+          "name": "301동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": "1,2",
+              "height": "30m",
+              "file": "1,2라인 30m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "50m",
+              "file": "1,2라인 50m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "70m",
+              "file": "1,2라인 70m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "90m",
+              "file": "1,2라인 90m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "110m",
+              "file": "1,2라인 110m.JPG"
+            },
+            {
+              "line": "1,4",
+              "height": "30m",
+              "file": "1,4라인 30m.JPG"
+            },
+            {
+              "line": "1,4",
+              "height": "50m",
+              "file": "1,4라인 50m.JPG"
+            },
+            {
+              "line": "1,4",
+              "height": "70m",
+              "file": "1,4라인 70m.JPG"
+            },
+            {
+              "line": "1,4",
+              "height": "90m",
+              "file": "1,4라인 90m.JPG"
+            },
+            {
+              "line": "1,4",
+              "height": "110m",
+              "file": "1,4라인 110m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "30m",
+              "file": "2,3라인 30m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "50m",
+              "file": "2,3라인 50m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "70m",
+              "file": "2,3라인 70m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "90m",
+              "file": "2,3라인 90m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "110m",
+              "file": "2,3라인 110m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "30m",
+              "file": "3,4라인 30m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "50m",
+              "file": "3,4라인 50m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "70m",
+              "file": "3,4라인 70m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "90m",
+              "file": "3,4라인 90m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "110m",
+              "file": "3,4라인 110m.JPG"
+            }
+          ]
+        },
+        {
+          "id": "302동",
+          "name": "302동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": "1,2",
+              "height": "30m",
+              "file": "1,2라인 30m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "50m",
+              "file": "1,2라인 50m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "70m",
+              "file": "1,2라인 70m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "90m",
+              "file": "1,2라인 90m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "110m",
+              "file": "1,2라인 110m.JPG"
+            },
+            {
+              "line": "1,4",
+              "height": "30m",
+              "file": "1,4라인 30m.JPG"
+            },
+            {
+              "line": "1,4",
+              "height": "50m",
+              "file": "1,4라인 50m.JPG"
+            },
+            {
+              "line": "1,4",
+              "height": "70m",
+              "file": "1,4라인 70m.JPG"
+            },
+            {
+              "line": "1,4",
+              "height": "90m",
+              "file": "1,4라인 90m.JPG"
+            },
+            {
+              "line": "1,4",
+              "height": "110m",
+              "file": "1,4라인 110m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "30m",
+              "file": "2,3라인 30m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "50m",
+              "file": "2,3라인 50m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "70m",
+              "file": "2,3라인 70m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "90m",
+              "file": "2,3라인 90m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "110m",
+              "file": "2,3라인 110m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "30m",
+              "file": "3,4라인 30m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "50m",
+              "file": "3,4라인 50m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "70m",
+              "file": "3,4라인 70m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "90m",
+              "file": "3,4라인 90m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "110m",
+              "file": "3,4라인 110m.JPG"
+            }
+          ]
+        },
+        {
+          "id": "303동",
+          "name": "303동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": "1,2",
+              "height": "30m",
+              "file": "1,2라인 30m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "50m",
+              "file": "1,2라인 50m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "70m",
+              "file": "1,2라인 70m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "90m",
+              "file": "1,2라인 90m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "110m",
+              "file": "1,2라인 110m.JPG"
+            },
+            {
+              "line": "1,4",
+              "height": "30m",
+              "file": "1,4라인 30m.JPG"
+            },
+            {
+              "line": "1,4",
+              "height": "50m",
+              "file": "1,4라인 50m.JPG"
+            },
+            {
+              "line": "1,4",
+              "height": "70m",
+              "file": "1,4라인 70m.JPG"
+            },
+            {
+              "line": "1,4",
+              "height": "90m",
+              "file": "1,4라인 90m.JPG"
+            },
+            {
+              "line": "1,4",
+              "height": "110m",
+              "file": "1,4라인 110m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "30m",
+              "file": "2,3라인 30m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "50m",
+              "file": "2,3라인 50m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "70m",
+              "file": "2,3라인 70m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "90m",
+              "file": "2,3라인 90m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "110m",
+              "file": "2,3라인 110m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "30m",
+              "file": "3,4라인 30m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "50m",
+              "file": "3,4라인 50m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "70m",
+              "file": "3,4라인 70m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "90m",
+              "file": "3,4라인 90m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "110m",
+              "file": "3,4라인 110m.JPG"
+            }
+          ]
+        }
+      ],
+      "facilities_data": []
+    },
+    "w_apt": {
+      "id": "w_apt",
+      "district_id": "nam",
+      "hosting": "self",
+      "is_new": true,
+      "is_featured": false,
+      "photos_folder": "더블유",
+      "name": "더블유",
+      "name_en": "W",
+      "short_name": "더블유",
+      "location": "부산광역시 남구 용호동",
+      "developer": "IS동서",
+      "constructor": "IS동서",
+      "project_type": "용호동 초고층 주상복합",
+      "scale": "지상 69층 / 4개동 / 247m",
+      "households_total": 1488,
+      "households_general": 1488,
+      "sale_status": "입주 완료",
+      "move_in": "2018년 4월",
+      "highlights": [
+        "전 세대 98% 바다 조망 · 광안대교 뷰",
+        "프랑스 건축가 로랑 살로몽 설계 랜드마크",
+        "지상 69층 247m 초고층 4개동 1,488세대",
+        "39·44·49·56·57평 중대형 구성",
+        "IS동서 시행·시공 (2018년 4월 입주)"
+      ],
+      "transit_infra": [],
+      "official_url": "",
+      "youtube_url": "",
+      "buildings_data": [
+        {
+          "id": "A",
+          "name": "A동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": "1,2",
+              "height": "30m",
+              "file": "1,2라인 30m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "60m",
+              "file": "1,2라인 60m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "90m",
+              "file": "1,2라인 90m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "120m",
+              "file": "1,2라인 120m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "150m",
+              "file": "1,2라인 150m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "30m",
+              "file": "2,3라인 30m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "60m",
+              "file": "2,3라인 60m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "90m",
+              "file": "2,3라인 90m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "120m",
+              "file": "2,3라인 120m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "150m",
+              "file": "2,3라인 150m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "30m",
+              "file": "3,4라인 30m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "60m",
+              "file": "3,4라인 60m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "90m",
+              "file": "3,4라인 90m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "120m",
+              "file": "3,4라인 120m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "1500m",
+              "file": "3,4라인 1500m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "30m",
+              "file": "4,5라인 30m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "60m",
+              "file": "4,5라인 60m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "90m",
+              "file": "4,5라인 90m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "120m",
+              "file": "4,5라인 120m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "150m",
+              "file": "4,5라인 150m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "30m",
+              "file": "5,6라인 30m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "60m",
+              "file": "5,6라인 60m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "90m",
+              "file": "5,6라인 90m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "120m",
+              "file": "5,6라인 120m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "150m",
+              "file": "5,6라인 150m.JPG"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "name": "B동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": "1,2",
+              "height": "30m",
+              "file": "1,2라인 30m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "60m",
+              "file": "1,2라인 60m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "90m",
+              "file": "1,2라인 90m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "120m",
+              "file": "1,2라인 120m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "150m",
+              "file": "1,2라인 150m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "30m",
+              "file": "2,3라인 30m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "60m",
+              "file": "2,3라인 60m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "90m",
+              "file": "2,3라인 90m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "120m",
+              "file": "2,3라인 120m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "150m",
+              "file": "2,3라인 150m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "30m",
+              "file": "3,4라인 30m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "60m",
+              "file": "3,4라인 60m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "90m",
+              "file": "3,4라인 90m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "120m",
+              "file": "3,4라인 120m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "150m",
+              "file": "3,4라인 150m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "30m",
+              "file": "4,5라인 30m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "60m",
+              "file": "4,5라인 60m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "90m",
+              "file": "4,5라인 90m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "120m",
+              "file": "4,5라인 120m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "150m",
+              "file": "4,5라인 150m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "30m",
+              "file": "5,6라인 30m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "60m",
+              "file": "5,6라인 60m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "90m",
+              "file": "5,6라인 90m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "120m",
+              "file": "5,6라인 120m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "150m",
+              "file": "5,6라인 150m.JPG"
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "name": "C동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": "1,2",
+              "height": "30m",
+              "file": "1,2라인 30m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "60m",
+              "file": "1,2라인 60m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "90m",
+              "file": "1,2라인 90m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "120m",
+              "file": "1,2라인 120m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "150m",
+              "file": "1,2라인 150m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "30m",
+              "file": "2,3라인 30m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "60m",
+              "file": "2,3라인 60m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "90m",
+              "file": "2,3라인 90m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "120m",
+              "file": "2,3라인 120m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "150m",
+              "file": "2,3라인 150m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "30m",
+              "file": "3,4라인 30m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "60m",
+              "file": "3,4라인 60m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "90m",
+              "file": "3,4라인 90m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "120m",
+              "file": "3,4라인 120m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "150m",
+              "file": "3,4라인 150m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "30m",
+              "file": "4,5라인 30m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "60m",
+              "file": "4,5라인 60m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "90m",
+              "file": "4,5라인 90m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "120m",
+              "file": "4,5라인 120m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "150m",
+              "file": "4,5라인 150m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "30m",
+              "file": "5,6라인 30m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "60m",
+              "file": "5,6라인 60m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "90m",
+              "file": "5,6라인 90m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "120m",
+              "file": "5,6라인 120m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "150m",
+              "file": "5,6라인 150m.JPG"
+            }
+          ]
+        },
+        {
+          "id": "D",
+          "name": "D동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": "1,2",
+              "height": "30m",
+              "file": "1,2라인 30m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "60m",
+              "file": "1,2라인 60m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "90m",
+              "file": "1,2라인 90m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "120m",
+              "file": "1,2라인 120m.JPG"
+            },
+            {
+              "line": "1,2",
+              "height": "150m",
+              "file": "1,2라인 150m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "30m",
+              "file": "2,3라인 30m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "60m",
+              "file": "2,3라인 60m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "90m",
+              "file": "2,3라인 90m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "120m",
+              "file": "2,3라인 120m.JPG"
+            },
+            {
+              "line": "2,3",
+              "height": "150m",
+              "file": "2,3라인 150m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "30m",
+              "file": "3,4라인 30m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "60m",
+              "file": "3,4라인 60m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "90m",
+              "file": "3,4라인 90m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "120m",
+              "file": "3,4라인 120m.JPG"
+            },
+            {
+              "line": "3,4",
+              "height": "150m",
+              "file": "3,4라인 150m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "30m",
+              "file": "4,5라인 30m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "60m",
+              "file": "4,5라인 60m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "90m",
+              "file": "4,5라인 90m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "120m",
+              "file": "4,5라인 120m.JPG"
+            },
+            {
+              "line": "4,5",
+              "height": "150m",
+              "file": "4,5라인 150m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "30m",
+              "file": "5,6라인 30m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "60m",
+              "file": "5,6라인 60m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "90m",
+              "file": "5,6라인 90m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "120m",
+              "file": "5,6라인 120m.JPG"
+            },
+            {
+              "line": "5,6",
+              "height": "150m",
+              "file": "5,6라인 150m.JPG"
+            }
+          ]
+        }
+      ],
+      "facilities_data": [
+        {
+          "id": "주변 환경",
+          "name": "주변 환경",
+          "captured": true,
+          "scenes": [
+            {
+              "name": "힐탑,빌리브 상가",
+              "file": "힐탑,빌리브 상가.JPG"
+            }
+          ]
+        }
+      ]
+    },
+    "samik_beach": {
+      "id": "samik_beach",
+      "district_id": "suyeong",
+      "hosting": "self",
+      "is_new": true,
+      "is_featured": false,
+      "photos_folder": "삼익비치",
+      "name": "삼익비치",
+      "name_en": "Samik Beach",
+      "short_name": "삼익비치",
+      "location": "부산광역시 수영구 남천동",
+      "developer": "GS건설",
+      "constructor": "GS건설",
+      "project_type": "재건축 정비사업 (그랑자이 더 비치)",
+      "scale": "재건축 후 지상 59층 (3개동)",
+      "households_total": 3060,
+      "households_general": 0,
+      "sale_status": "재건축 진행 중",
+      "move_in": "재건축 진행 중",
+      "highlights": [
+        "광안리 바다 조망 — 재건축 전 마지막 조망 기록",
+        "재건축 후 59층 3,060세대 1:1 재건축 (GS건설 그랑자이 더 비치)",
+        "2만평 입주민 공원·스카이라운지 인피니티풀 예정",
+        "사업시행계획변경인가 단계 (2026년 5~6월 주민공람 완료) · 다음 단계 관리처분계획 인가"
+      ],
+      "transit_infra": [],
+      "official_url": "",
+      "youtube_url": "",
+      "buildings_data": [
+        {
+          "id": "101",
+          "name": "101동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": null,
+              "height": "50m",
+              "file": "101동 50m.JPG"
+            },
+            {
+              "line": null,
+              "height": "70m",
+              "file": "101동 70m.JPG"
+            },
+            {
+              "line": null,
+              "height": "90m",
+              "file": "101동 90m.JPG"
+            },
+            {
+              "line": null,
+              "height": "110m",
+              "file": "101동 110m.JPG"
+            },
+            {
+              "line": null,
+              "height": "130m",
+              "file": "101동 130m.JPG"
+            },
+            {
+              "line": null,
+              "height": "150m",
+              "file": "101동 150m.JPG"
+            }
+          ]
+        },
+        {
+          "id": "102",
+          "name": "102동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": null,
+              "height": "50m",
+              "file": "102동 50m.JPG"
+            },
+            {
+              "line": null,
+              "height": "70m",
+              "file": "102동 70m.JPG"
+            },
+            {
+              "line": null,
+              "height": "90m",
+              "file": "102동 90m.JPG"
+            },
+            {
+              "line": null,
+              "height": "110m",
+              "file": "102동 110m.JPG"
+            },
+            {
+              "line": null,
+              "height": "130m",
+              "file": "102동 130m.JPG"
+            },
+            {
+              "line": null,
+              "height": "150m",
+              "file": "102동 150m.JPG"
+            }
+          ]
+        },
+        {
+          "id": "103",
+          "name": "103동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": null,
+              "height": "50m",
+              "file": "103동 50m.JPG"
+            },
+            {
+              "line": null,
+              "height": "70m",
+              "file": "103동 70m.JPG"
+            },
+            {
+              "line": null,
+              "height": "90m",
+              "file": "103동 90m.JPG"
+            },
+            {
+              "line": null,
+              "height": "110m",
+              "file": "103동 110m.JPG"
+            },
+            {
+              "line": null,
+              "height": "130m",
+              "file": "103동 130m.JPG"
+            },
+            {
+              "line": null,
+              "height": "150m",
+              "file": "103동 150m.JPG"
+            }
+          ]
+        },
+        {
+          "id": "104",
+          "name": "104동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": null,
+              "height": "50m",
+              "file": "104동 50m.JPG"
+            },
+            {
+              "line": null,
+              "height": "70m",
+              "file": "104동 70m.JPG"
+            },
+            {
+              "line": null,
+              "height": "90m",
+              "file": "104동 90m.JPG"
+            },
+            {
+              "line": null,
+              "height": "110m",
+              "file": "104동 110m.JPG"
+            },
+            {
+              "line": null,
+              "height": "130m",
+              "file": "104동 130m.JPG"
+            },
+            {
+              "line": null,
+              "height": "150m",
+              "file": "104동 150m.JPG"
+            }
+          ]
+        },
+        {
+          "id": "105",
+          "name": "105동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": null,
+              "height": "50m",
+              "file": "105동 50m.JPG"
+            },
+            {
+              "line": null,
+              "height": "70m",
+              "file": "105동 70m.JPG"
+            },
+            {
+              "line": null,
+              "height": "90m",
+              "file": "105동 90m.JPG"
+            },
+            {
+              "line": null,
+              "height": "110m",
+              "file": "105동 110m.JPG"
+            },
+            {
+              "line": null,
+              "height": "130m",
+              "file": "105동 130m.JPG"
+            },
+            {
+              "line": null,
+              "height": "150m",
+              "file": "105동 150m.JPG"
+            }
+          ]
+        },
+        {
+          "id": "106",
+          "name": "106동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": null,
+              "height": "50m",
+              "file": "106동 50m.JPG"
+            },
+            {
+              "line": null,
+              "height": "70m",
+              "file": "106동 70m.JPG"
+            },
+            {
+              "line": null,
+              "height": "90m",
+              "file": "106동 90m.JPG"
+            },
+            {
+              "line": null,
+              "height": "110m",
+              "file": "106동 110m.JPG"
+            },
+            {
+              "line": null,
+              "height": "130m",
+              "file": "106동 130m.JPG"
+            },
+            {
+              "line": null,
+              "height": "150m",
+              "file": "106동 150m.JPG"
+            }
+          ]
+        },
+        {
+          "id": "107",
+          "name": "107동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": null,
+              "height": "50m",
+              "file": "107동 50m.JPG"
+            },
+            {
+              "line": null,
+              "height": "70m",
+              "file": "107동 70m.JPG"
+            },
+            {
+              "line": null,
+              "height": "90m",
+              "file": "107동 90m.JPG"
+            },
+            {
+              "line": null,
+              "height": "110m",
+              "file": "107동 110m.JPG"
+            },
+            {
+              "line": null,
+              "height": "130m",
+              "file": "107동 130m.JPG"
+            },
+            {
+              "line": null,
+              "height": "150m",
+              "file": "107동 150m.JPG"
+            }
+          ]
+        },
+        {
+          "id": "108",
+          "name": "108동",
+          "captured": true,
+          "scenes": [
+            {
+              "line": null,
+              "height": "50m",
+              "file": "108동 50m.JPG"
+            },
+            {
+              "line": null,
+              "height": "70m",
+              "file": "108동 70m.JPG"
+            },
+            {
+              "line": null,
+              "height": "90m",
+              "file": "108동 90m.JPG"
+            },
+            {
+              "line": null,
+              "height": "110m",
+              "file": "108동 110m.JPG"
+            },
+            {
+              "line": null,
+              "height": "130m",
+              "file": "108동 130m.JPG"
+            },
+            {
+              "line": null,
+              "height": "150m",
+              "file": "108동 150m.JPG"
+            }
+          ]
+        }
+      ],
+      "facilities_data": []
+    },
+    "hyeopjin_taeyang": {
+      "id": "hyeopjin_taeyang",
+      "district_id": "suyeong",
+      "hosting": "self",
+      "is_new": true,
+      "is_featured": false,
+      "photos_folder": "협진태양",
+      "name": "협진태양",
+      "name_en": "Hyeopjin Taeyang",
+      "short_name": "협진태양",
+      "location": "부산광역시 수영구 남천동 3-5 (광안해변로141번길)",
+      "developer": "—",
+      "constructor": "—",
+      "project_type": "",
+      "scale": "지상 15층 / 4개동",
+      "households_total": 210,
+      "households_general": 210,
+      "sale_status": "입주 완료 (재건축 미확정)",
+      "move_in": "1984년 6월",
+      "highlights": [
+        "광안리 바다 조망 (남천동 광안해변로 입지)",
+        "중소형~대형 혼합 평형 구성",
+        "1984년 6월 입주 · 지상 15층 4개동 210세대",
+        "재건축 미확정 (입주 완료 단지)"
+      ],
+      "transit_infra": [
+        "부산 도시철도 2호선 금련산역 도보 6분",
+        "광안리해수욕장·남천동 생활권"
+      ],
+      "official_url": "",
+      "youtube_url": "",
+      "buildings_data": [
+        {
+          "id": ".",
+          "name": "101동 102동 중앙",
+          "captured": true,
+          "scenes": [
+            {
+              "line": null,
+              "height": "60m",
+              "file": "101동 102동 중앙 60m.JPG"
+            },
+            {
+              "line": null,
+              "height": "80m",
+              "file": "101동 102동 중앙 80m.JPG"
+            },
+            {
+              "line": null,
+              "height": "100m",
+              "file": "101동 102동 중앙 100m.JPG"
+            },
+            {
+              "line": null,
+              "height": "120m",
+              "file": "101동 102동 중앙 120m.JPG"
+            },
+            {
+              "line": null,
+              "height": "140m",
+              "file": "101동 102동 중앙 140m.JPG"
+            }
+          ]
+        }
+      ],
+      "facilities_data": []
     }
   }
 }

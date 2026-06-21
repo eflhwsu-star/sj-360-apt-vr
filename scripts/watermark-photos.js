@@ -7,7 +7,7 @@ const fs    = require('fs');
 const path  = require('path');
 
 const photosDir   = path.join(__dirname, '..', 'public', 'photos');
-const originalDir = path.join(__dirname, '..', 'photos-original');
+const originalDir = path.join(__dirname, '..', 'public', 'photos-original');
 
 function createWatermarkSvg(scale = 1.0) {
   const w = Math.round(720 * scale);

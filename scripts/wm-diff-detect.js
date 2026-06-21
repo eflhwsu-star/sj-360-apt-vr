@@ -20,7 +20,7 @@ async function detect(orig,dep){
 (async()=>{
   const apt=process.argv[2]||'한화포레나 부산대연';
   const sub='101';
-  const oDir=path.join(__dirname,'..','photos-original',apt,sub);
+  const oDir=path.join(__dirname,'..','public','photos-original',apt,sub);
   const dDir=path.join(__dirname,'..','public','photos',apt,sub);
   const files=fs.readdirSync(oDir).filter(f=>/\.jpe?g$/i.test(f)).sort().slice(0,6);
   console.log(`\n===== ${apt} =====`);
